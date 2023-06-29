@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- Coding by CodingLab | wwww.codinglabweb.com -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Animated Toggle Button</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Boxicons CSS -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
+</head>
+<body>
+  <div class="toggle-btn">
+    <div class="icon">
+      <i class="bx bxs-lock-open"></i>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.querySelector(".toggle-btn"),
+    lockIcon = document.querySelector(".icon i");
+
+    // 토글버튼에 클릭 이벤트 추가 후 active라는 클래스 명 추가
+    toggleBtn.addEventListener("click", () => {
+      toggleBtn.classList.toggle("active");
+
+      // toggleBtn의 클래스가 active 있는지 판별
+      if(toggleBtn.classList.contains("active")) {
+        // lockIcon의 클래스가 bxs-lock-open에서 bxs-lock으로 바꾼다.
+        return lockIcon.classList.replace( "bxs-lock-open" , "bxs-lock" );
+      }
+      lockIcon.classList.replace( "bxs-lock" , "bxs-lock-open" );
+    });
+  </script>
+</body>
+</html>

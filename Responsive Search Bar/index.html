@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- Coding by CodingLab | www.codinglabweb.com -->
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Bar in HTML and CSS</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Unicons CSS -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+</head>
+<body>
+  <div class="input-box">
+    <i class="uil uil-search"></i>
+    <input type="text" placeholder="Search here...">
+    <button class="button">Search</button>
+  </div>
+
+  <script>
+    const button = document.querySelector(".button");
+
+    button.addEventListener("mousedown", () => button.classList.add("clicked"));
+    button.addEventListener("mouseup", () => button.classList.remove("clicked"));
+  </script>
+</body>
+</html>
