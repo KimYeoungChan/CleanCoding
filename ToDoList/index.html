@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h2>To Do List</h2>
+            <input type="text" placeholder="Write here..." id="inputBx" />
+            <ul id="list"></ul>
+        </div>
+    </div>
+    <script>
+        // 변수
+        const inputBx = document.querySelector("#inputBx");
+        const list = document.querySelector("#list");
+
+        // 
+        inputBx.addEventListener("keyup", function(){
+            if (event.key == "Enter") {
+                addItem(this.value); // input 값 나옴
+                this.value = ""; // 빈 값으로 나옴
+            } 
+        });
+
+        // addItem 함수
+        const addItem = (inputBx) => {
+            // li 태그 생성
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `${inputBx}<i></i>`;
+
+            //
+            listItem.addEventListener("click", function(){
+                this.classList.toggle('done'); // done 클래스 넣다 뻇다 함
+            });
+
+            // i 클릭하면 
+            listItem.querySelector('i').addEventListener('click', function(){
+                listItem.remove(); // listItem 삭제
+            })
+
+            // list 안에 listItem 생성
+            list.appendChild(listItem);
+        }
+    </script>
+</body>
+</html>
