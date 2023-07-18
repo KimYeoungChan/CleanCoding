@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Menu Indicator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Team</a>
+        <a href="#">Contact</a>
+        <div id="indicator"></div>
+    </nav>
+    <script>
+        const maker = document.querySelector('#indicator');
+        const nav = document.querySelector('nav');
+        const item = document.querySelectorAll('nav a');
+
+        nav.onclick = function() {
+            maker.classList.toggle('change');
+        };
+
+        function indicator(e) {
+            maker.style.left = e.offsetLeft + 'px';
+            maker.style.width = e.offsetWidth + 'px';
+            maker.style.dispaly = 'block';
+            maker.style.filter = 'hue-rotate(' + Math.random() * 360 + 'deg)'
+        };
+        item.forEach(link => {
+            link.addEventListener('click', (e) => {
+                indicator(e.target);
+            });
+        });
+
+        function addActiveClass() {
+            item.forEach((i) =>
+                i.classList.add('active'));
+                this.classList.add('active');
+            };
+
+            item.forEach((i) =>
+                i.addEventListener('click', addActiveClass)
+            );
+    </script>
+</body>
+</html>
