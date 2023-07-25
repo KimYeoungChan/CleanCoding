@@ -1,0 +1,38 @@
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    min-height: 100vh;
+    background-color: #111;
+    overflow: hidden;
+}
+.logo {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width:60vw;
+}
+.lines {
+    position: absolute;
+    height: 100vh;
+    background-color:#ea0914;
+    z-index: 1000;
+    width: 5px;
+    mix-blend-mode: color-dodge;
+    animation: animate 2s linear infinite;
+}
+
+@keyframes animate
+{
+    0% 
+    {
+        opacity:0;
+    }
+    50%
+    {
+        opacity: 1;
+    }
+}
