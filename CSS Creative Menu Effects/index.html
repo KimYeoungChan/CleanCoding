@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Creative Menu Effects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Creative Menu Hover Effects</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Contact</a></li>
+        <div id="cursor"></div>
+    </ul>
+    <script>
+        let text = document.querySelectorAll('ul li a').forEach(text => {
+            text.innerHTML = text.innerText.split('').map((letters, i) => `<span style="transition-delay:${i * 40}ms">${letters}</span>`).join('');
+        })
+
+        let cusor = document.querySelector('#cursor');
+        document.addEventListener("mousemove", (e) => {
+            cusor.style.top = e.pageY + "px";
+            cusor.style.left = e.pagX + "px";
+        });
+    </script>
+</body>
+
+</html>
