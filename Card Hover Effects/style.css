@@ -6,6 +6,7 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 body {
   display: flex;
   justify-content: center;
@@ -41,4 +42,18 @@ body {
   -webkit-text-stroke: 1px #fff;
   text-align: center;
   z-index: 1;
+}
+.container .card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--img);
+  background-position: center;
+  background-size: cover;
+  clip-path: circle(0px at var(--x) var(--y));
+  z-index: 2;
+  transition: clip-path 0.1s;
+}
+.container .card:hover:after {
+  clip-path: circle(150px at var(--x) var(--y));
 }
