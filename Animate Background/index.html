@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animate Background | Happy Diwli</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <section class="sec"></section>
+  <script>
+    for (let i = 1; i <= 300; i++) {
+      let box = document.createElement('div');
+      box.classList.add('box');
+      box.style.filter = `hue-rotate(${i * 10}deg)`;
+      document.querySelector('.sec').appendChild(box);
+    }
+    function animatebox() {
+      let boxes = document.querySelectorAll('.box');
+      let num = Math.floor(Math.random() * boxes.length);
+      boxes[num].classList.toggle('animate');
+    }
+    setInterval(animatebox, 1000)
+  </script>
+</body>
+
+</html>
