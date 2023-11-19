@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Countdown Time | 2024</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="time">
+    <div class="circle" style="--clr:#1eb9ff;">
+      <svg>
+        <circle cx="70" cy="70" r="70" id="dd"></circle>
+      </svg>
+      <div id="days">00<br><span>Days</span></div>
+    </div>
+    <div class="circle" style="--clr:#ff2972;">
+      <svg>
+        <circle cx="70" cy="70" r="70" id="hh"></circle>
+      </svg>
+      <div id="hours">00<br><span>Hours</span></div>
+    </div>
+    <div class="circle" style="--clr:#fee800;">
+      <svg>
+        <circle cx="70" cy="70" r="70" id="mm"></circle>
+      </svg>
+      <div id="minutes">00<br><span>Minutes</span></div>
+    </div>
+    <div class="circle" style="--clr:#fee800;">
+      <svg>
+        <circle cx="70" cy="70" r="70" id="ss"></circle>
+      </svg>
+      <div id="seconds">00<br><span>Seconds</span></div>
+    </div>
+  </div>
+
+  <h2 class="newYear">2024<br><span>Happy New Year</span></h2>
+  <script>
+    const days = document.getElementById('days');
+    const hours = document.getElementById('hours');
+    const minutes = document.getElementById('minutes');
+    const seconds = document.getElementById('seconds');
+
+    // console.log(days, hours, minutes, seconds)
+
+    const dd = document.getElementById('dd');
+    const hh = document.getElementById('hh');
+    const mm = document.getElementById('mm');
+    const ss = document.getElementById('ss');
+
+    // console.log(dd, hh, mm, ss)
+
+    let endDate = '01/01/2024 00:00:00';
+
+    let x = setInterval(function () {
+      let now = new Date(endDate).getTime();
+      let countDown = new Date().getTime();
+      let distance = now - countDown;
+
+      // 시간, 분, 초 계산법
+      let d = Math.floor(distance / (1000 * 60 * 60 * 24));
+      let h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      let s = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // 나올 결과값의 요소
+      days.innerHTML = d + '<br><span>Days</span>';
+      hours.innerHTML = h + '<br><span>Hours</span>';
+      minutes.innerHTML = m + '<br><span>Minutes</span>';
+      seconds.innerHTML = s + '<br><span>Seconds</span>';
+
+      // 선 애니메이션
+      dd.style.strokeDashoffset = 440 - (440 * d) / 365; // 1년을 나눈것
+      hh.style.strokeDashoffset = 440 - (440 * hh) / 24; // 하루를 나눈것
+      mm.style.strokeDashoffset = 440 - (440 * m) / 60; // 60분 나눈것
+      ss.style.strokeDashoffset = 440 - (440 * s) / 60; // 60초 나눈것
+
+      // 카운트 다운이 지났을 경우
+      if (distance < 0) {
+        clearInterval(X);
+        document.getElementById("time").style.display = "none"
+        document.querySelector('.newYear').style.display = 'block'
+      }
+    });
+
+  </script>
+</body>
+
+</html>
