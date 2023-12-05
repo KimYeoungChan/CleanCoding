@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+img {
+  height: 70px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #0f222f;
+}
+ul {
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: 0.5s;
+}
+
+ul:hover {
+  gap: 30px;
+}
+
+ul li {
+  position: relative;
+  list-style: none;
+  width: 450px;
+  height: 100px;
+  padding: 15px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: 0.5s;
+  box-shadow: 0 -15px 25px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+}
+
+ul li:nth-child(1) {
+  transform: translateZ(-75px) translate(-80px, -40px) rotate(-15deg);
+}
+
+ul li:nth-child(2) {
+  transform: translateZ(80px) translate(50px, 20px) rotate(5deg);
+}
+
+ul li:nth-child(3) {
+  transform: translateZ(75px) translate(0, -30px) rotate(-25deg);
+}
+
+ul li:nth-child(4) {
+  transform: translateZ(20px) translate(-100px, -24px) rotate(15deg);
+}
+
+ul:hover li {
+  transform: translateZ(0) translate(0, 0) rotate(0deg);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
+}
+
+ul li .box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  transition: 0.5s;
+}
+
+ul li:hover .box {
+  transform: translateX(-50px);
+}
+
+ul li .box img {
+  max-width: 70px;
+  border-radius: 5px;
+}
+ul li .content {
+  width: 100%;
+  cursor: pointer;
+}
+ul li .content h4 {
+  font-weight: 600;
+  color: #aaa;
+  transition: 0.5s;
+}
+ul li .content p {
+  position: relative;
+  width: 100%;
+  line-height: 1em;
+  color: #aaa;
+  transition: 0.5s;
+}
+ul li .content p span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #aaa;
+  transition: 0.5s;
+  font-size: 0.75em;
+}
+
+ul li:hover .content h4,
+ul li:hover .content p,
+ul li:hover .content p span {
+  color: #fff;
+}
