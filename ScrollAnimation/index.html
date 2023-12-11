@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll To See Magic</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h2 class="title">Forest</h2>
+  <section>
+    <h2 class="inner-title">Forest</h2>
+  </section>
+  <script>
+    let section = document.querySelector('section');
+    window.addEventListener('scroll', function () {
+      let value = window.scrollY;
+      section.style.clipPath = "circle(" + value * 2 + "px at left center)"
+    })
+  </script>
+</body>
+
+</html>
