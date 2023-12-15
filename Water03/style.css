@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Gluten:wght@600&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #e8e8e8;
+}
+.content {
+  position: relative;
+}
+.content h2 {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 15em;
+}
+.content h2:nth-child(1) {
+  color: transparent;
+  -webkit-text-stroke: 3px #333;
+  filter: blur(3px);
+}
+
+.content h2:nth-child(3) {
+  color: #fff6;
+  filter: drop-shadow(0 15px 15px #fff);
+  z-index: 1;
+  text-shadow: -15px 15px 15px rgba(0, 0, 0, 0.2),
+    15px -15px 15px rgba(0, 0, 0, 0.2);
+}
+
+.content h2:nth-child(2) {
+  color: #03a9f4;
+  z-index: 2;
+  animation: animate 4s ease-in-out infinite;
+}
+
+@keyframes animate {
+  0%,
+  100% {
+    clip-path: polygon(
+      0% 50%,
+      4% 46%,
+      4% 46%,
+      8% 54%,
+      10% 47%,
+      15% 47%,
+      19% 48%,
+      24% 49%,
+      29% 52%,
+      33% 55%,
+      41% 58%,
+      45% 59%,
+      50% 60%,
+      50% 60%,
+      55% 58%,
+      60% 55%,
+      64% 52%,
+      69% 49%,
+      75% 46%,
+      81% 46%,
+      88% 44%,
+      93% 44%,
+      99% 45%,
+      100% 100%,
+      1% 100%,
+      0% 51%,
+      0% 50%
+    );
+  }
+  50% {
+    clip-path: polygon(
+      1% 61%,
+      7% 57%,
+      13% 60%,
+      21% 62%,
+      28% 61%,
+      38% 62%,
+      47% 60%,
+      52% 59%,
+      60% 56%,
+      70% 52%,
+      75% 51%,
+      81% 52%,
+      88% 47%,
+      95% 42%,
+      99% 41%,
+      100% 99%,
+      1% 99%,
+      1% 63%
+    );
+  }
+}
