@@ -129,6 +129,8 @@ body {
   animation-play-state: paused;
 }
 
+/* hover시 재생이 되는 모션 */
+
 .container .box span::after {
   content: "";
   position: absolute;
