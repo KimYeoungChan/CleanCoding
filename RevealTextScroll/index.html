@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll To Reveal Effects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <section>
+    <p>Scroll To Reveal Elements.</p>
+  </section>
+  <div>
+    <h2 data-text="2020">2020</h2>
+  </div>
+  <div>
+    <h2 data-text="2021">2021</h2>
+  </div>
+  <div>
+    <h2 data-text="2022">2022</h2>
+  </div>
+  <div>
+    <h2 data-text="2023">2023</h2>
+  </div>
+  <div class="current">
+    <h2 data-text="2024">2024</h2>
+  </div>
+  <div>
+    <h2 data-text="2025">2025</h2>
+  </div>
+  <div>
+    <h2 data-text="2026">2026</h2>
+  </div>
+  <div>
+    <h2 data-text="2027">2027</h2>
+  </div>
+  <div>
+    <h2 data-text="2028">2028</h2>
+  </div>
+  <div>
+    <h2 data-text="...">...</h2>
+  </div>
+  <section>
+    <p>Thanks for Watching :)</p>
+  </section>
+  <script>
+    // reveal 함수 선언
+    function reveal() {
+      let item = document.querySelectorAll('h2'); // 변수선언
+      // 변수에 저장된 모든 <h2> 요소에 대해 반복합니다.
+      for (var i = 0; i < item.length; i++) {
+        let windowHeight = window.innerHeight; // 현재 창의 높이
+        let elementTop = item[i].getBoundingClientRect().top; // <h2> 요소의 상단에서 뷰포트의 상단까지의 거리를 elementTop 변수에 저장
+        let elementVisible = 300; // 요소가 화면에 나타나기 위한 임의값을 설정합니다.
+        // 만약 현재 요소의 상단 위치가 windowHeight - elementVisible 값보다 작으면
+        if (elementTop < windowHeight - elementVisible) { // 즉, 요소가 화면 안에 들어올 정도로 스크롤되었으면
+          item[i].classList.add('active'); // active 클래스 추가
+        } else {
+          item[i].classList.remove('active');  // active 클래스 제거
+        }
+      }
+    }
+
+    // scroll 이벤트가 생길 때마다 reveal 활성화
+    window.addEventListener('scroll', reveal)
+  </script>
+</body>
+
+</html>
