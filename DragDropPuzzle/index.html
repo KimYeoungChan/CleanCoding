@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drag & Drop Puzzle</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="drag" id="drag">
+    <div class="dragBox">
+      <div class="images" draggable="true" ondragstart="drag(event)" id="block1" style="--img:url(1.png);"></div>
+    </div>
+    <div class="dragBox">
+      <div class="images" draggable="true" ondragstart="drag(event)" id="block2" style="--img:url(2.png);"></div>
+    </div>
+    <div class="dragBox">
+      <div class="images" draggable="true" ondragstart="drag(event)" id="block3" style="--img:url(3.png);"></div>
+    </div>
+    <div class="dragBox">
+      <div class="images" draggable="true" ondragstart="drag(event)" id="block4" style="--img:url(4.png);"></div>
+    </div>
+    <div class="dragBox">
+      <div class="images" draggable="true" ondragstart="drag(event)" id="block5" style="--img:url(5.png);"></div>
+    </div>
+    <div class="dragBox">
+      <div class="images" draggable="true" ondragstart="drag(event)" id="block6" style="--img:url(6.png);"></div>
+    </div>
+    <div class="dragBox">
+      <div class="images" draggable="true" ondragstart="drag(event)" id="block7" style="--img:url(7.png);"></div>
+    </div>
+    <div class="dragBox">
+      <div class="images" draggable="true" ondragstart="drag(event)" id="block8" style="--img:url(8.png);"></div>
+    </div>
+    <div class="dragBox">
+      <div class="images" draggable="true" ondragstart="drag(event)" id="block9" style="--img:url(9.png);"></div>
+    </div>
+  </div>
+
+  <div class="board">
+    <div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  </div>
+
+  <button class="reset" onclick="window.location.reload();">Reset Puzzle</button>
+  <script>
+
+    //드래그 이벤트가 발생했을 때 호출됩니다.
+    function drag(event) {
+      // 데이터 전송 개체에 "text" 형식으로 데이터를 설정합니다. 여기서 데이터는 드래그된 요소의 ID입니다.
+      event.dataTransfer.setData("text", event.target.id);
+    }
+
+
+    // 는 드롭 영역 위에 요소를 드롭할 수 있도록 허용하는 데 사용됩니다.
+    function allowDrop(event) {
+      event.preventDefault(); // 이벤트의 기본 동작을 중지시킵니다. 여기서는 요소를 드롭 영역 위로 이동할 수 있도록 허용하기 위해 사용됩니다.
+    }
+
+    // 이 함수는 요소가 드롭되었을 때 호출됩니다. 드롭된 요소의 ID를 가져와서 해당 요소를 드롭 영역에 추가합니다.
+    function drop(event) {
+      event.preventDefault();
+      // 이 코드는 데이터 전송 개체에서 "text" 형식의 데이터를 가져옵니다. 여기서는 드래그된 요소의 ID를 가져옵니다.
+      let data = event.dataTransfer.getData("text");
+      //  이 코드는 드롭된 요소를 드롭 영역에 추가합니다. 가져온 데이터(ID)를 사용하여 해당 요소를 찾고, 이를 드롭 영역의 자식 요소로 추가합니다.
+      event.target.appendChild(document.getElementById(data));
+    }
+
+    // 페이지가 온 로드 될 때, 실행된다.
+    onload = function () {
+      // : 이 코드는 'drag'라는 ID를 가진 요소를 찾아 변수 parent에 할당합니다. 여기서는 드래그할 요소들이 포함된 부모 요소를 찾습니다.
+      let parent = document.getElementById('drag');
+      let frag = document.createDocumentFragment(); // 이 코드는 비어 있는 문서 조각을 만듭니다. 여기서는 요소들을 무작위로 재배열할 때 사용됩니다.
+      while (parent.children.length) { // parent 요소의 자식 요소들이 있는 동안에 반복합니다.
+        frag.appendChild(parent.children[Math.floor(Math.random() * parent.children.length)]); // 이 코드는 부모 요소(parent)의 자식 요소를 무작위로 선택하여 문서 조각(frag)에 추가합니다.
+      }
+      // 문서 조각(frag)을 부모 요소(parent)에 추가합니다. 이를 통해 부모 요소에 자식 요소가 재배열되어 퍼즐이 섞입니다.
+      parent.appendChild(frag);
+    }
+  </script>
+</body>
+
+</html>
