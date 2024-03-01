@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Animation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <section>
+    <h2>Scroll&nbspTo&nbspSee&nbspMagic</h2>
+  </section>
+
+  <!-- gsap cdn -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- gsap scrolltrigger cdn -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    let text = document.querySelector('h2'); // h2를 변수에 저장
+    let textString = text.textContent; // 텍스트를 변수에 저장
+    let splitText = textString.split(""); // 텍스트를 배열로 변환
+    text.textContent = ""; // 텍스트 초기화
+    for (let i = 0; i < splitText.length; i++) { // i가 splitText의 갯수만큼 하기
+      text.innerHTML += "<span>" + splitText[i] + "</span>"  // span 태그에 텍스트를 넣기
+    };
+
+    let tl = gsap.timeline();  // timeline 생성
+    tl.from("span", {
+      y: -500, // y축으로 -100만큼 이동
+      opacity: 0, // 투명도 0
+      scrollTrigger: { // scrollTrigger 설정
+        pin: true, // 스크롤이 멈추지 않음
+        scrub: 1, // 스크롤에 따라 애니메이션이 진행
+        trigger: "section", // section을 trigger로 설정
+      },
+      stagger: {
+        amount: 2// 1초 딜레이
+      }
+    })
+  </script>
+</body>
+
+</html>
