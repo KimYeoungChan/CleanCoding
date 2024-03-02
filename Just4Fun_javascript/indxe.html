@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Just For Fun | Javascript</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h2>Just For Fun</h2>
+  <div class="container"></div>
+  <script>
+    let container = document.querySelector('.container'); // container 선언
+    let count = 900; // 박스 숫자
+    for (let i = 0; i < count; i++) { // 카운터 숫자 만큼
+      let box = document.createElement('div'); // div 태그 생성
+      box.className = 'box'; // 클래스 명은 box
+      container.appendChild(box); // container에 박스 요소 생성
+    }
+
+    let box = document.querySelectorAll('.box'); // 박스 선언
+    for (let i = 0; i < box.length; i++) { // 박스 갯수 만큼 실행
+      let duration = Math.random() * 3; // 0~3까지 랜덤
+      let changeColor = Math.random() * 360;  // 0~360까지 랜덤
+      box[i].addEventListener('mouseover', (e) => { // mouseover 이벤트 
+        box[i].classList.add('active'); // acitve 클래스 추가
+        box[i].style.animationDuration = 1 + duration + 's'; // 에니메이션 시간 미루기
+        box[i].style.filter = 'hue-rotate(' + changeColor + 'deg)'; // 색상 바꾸기
+      })
+    }
+  </script>
+</body>
+
+</html>
