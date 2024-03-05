@@ -10,7 +10,44 @@
 
 <body>
   <section>Scroll Down</section>
+  <div class="container">
+    <img src="img1.jpg" class="item" alt="">
+    <img src="img2.jpg" class="item" alt="">
+    <img src="img3.jpg" class="item" alt="">
+    <img src="img4.jpg" class="item" alt="">
+    <img src="img5.jpg" class="item" alt="">
+    <img src="img6.jpg" class="item" alt="">
+    <img src="img7.jpg" class="item" alt="">
+    <img src="img8.jpg" class="item" alt="">
+  </div>
   <section>Scroll Up</section>
+  <script>
+    // Intersection Observer API 사용해서 요소들을 감지하고 스타일 조정을 한다
+    // 옵션 정의
+    let options = {
+      // threshold이 임계값이라는 뜻
+      //  0.1부터 1까지의 0.1 간격의 값
+      threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+    }
+
+
+    // 콜백함수 정의
+    //  이 함수는 Intersection Observer가 감지한 각 entry에 대해 실행됩니다. 
+    // 이때 entry.intersectionRatio를 사용하여 해당 entry가 얼마나 화면에 보이는지를 나타내는 값을 얻어와서 그 값에 따라 해당 요소의 크기를 조정합니다.
+    let callback = (entries, observer) => {
+      entries.forEach((entry) => {
+        entry.target.style.scale = entry.intersectionRatio;
+      });
+    };
+
+    // 이 때 앞서 정의한 콜백 함수와 옵션을 전달합니다.
+    let observer = new IntersectionObserver(callback, options);
+
+    for (const target of document.querySelectorAll('.item')) { // document에서 클래스가 'item'인 모든 요소를 선택
+      observer.observe(target); //  각 요소를 Intersection Observer의 감시 대상으로 등록합니다.
+    }
+
+  </script>
 </body>
 
 </html>

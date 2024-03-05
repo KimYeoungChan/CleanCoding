@@ -7,8 +7,29 @@ body {
   background: #222;
 }
 
+img {
+  width: 500px;
+  height: 500px;
+}
+
 section {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #fff;
+  font-size: 6em;
+  /* 내가 보이는 영역을 최대로 하기 위해 */
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.container .item {
+  transition: 0.5s;
 }
