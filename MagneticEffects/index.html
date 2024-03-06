@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magnetic Effect | Javascript</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <ul>
+    <li>
+      <a href="#"></a>
+      <i class="fa-brands fa-facebook-f"></i>
+    </li>
+    <li>
+      <a href="#">
+      </a>
+      <i class="fa-brands fa-x-twitter"></i>
+    </li>
+    <li>
+      <a href="#"></a>
+      <i class="fa-brands fa-instagram"></i>
+    </li>
+    <div id="cursor"></div>
+  </ul>
+  <script>
+    let cursor = document.getElementById('cursor'); // curosr 선언
+    document.addEventListener('mousemove', (e) => { //  마우스가 움직일 떄마다 함수 실행
+      cursor.style.left = e.pageX + 'px'; // 마우스 커서의 x 좌표(e.pageX)에 'px'를 붙여 설정합니다
+      cursor.style.top = e.pageY + 'px'; /// 마우스 커서의 y 좌표(e.pageY)에 'px'를 붙여 설정합니다
+    })
+
+    let items = document.querySelectorAll('ul li').forEach((item) => { // <ul> 요소의 자식인 모든 <li> 요소를 선택한 다음, forEach()를 사용하여 각 요소를 반복합니다.
+      item.addEventListener('mousemove', (e) => { // 마우스가 <li> 요소 위를 움직이는 함수 실행
+        let x = e.offsetX; // 마우스 포인터의 수평 좌표를 대상 <li> 요소에 대한 상대적인 좌표로 가져옵니다.
+        let y = e.offsetY; // 마우스 포인터의 수직 좌표를 대상 <li> 요소에 대한 상대적인 좌표로 가져옵니다.
+
+        let itemWdith = item.clientWidth; // 이 코드는 대상 <li> 요소의 너비 
+        let itemHeight = item.clientHeight; // 이 코드는 대상 <li> 요소의 높이
+
+        let transX = (x - itemWdith / 2); // <li> 요소 내에서 마우스 포인터를 가운데로 정렬하기 위한 수평 이동량
+        let transY = (y - itemHeight / 2); // <li> 요소 내에서 마우스 포인터를 가운데로 정렬하기 위한 수직 이동량
+
+        item.style.transform = `translateX(${transX}px) translateY(${transY}px)`; // <li> 요소의 CSS transform 속성을 설정하여 요소를 수평으로 transX 픽셀만큼, 수직으로 transY 픽셀만큼 이동시킵니다.
+      });
+
+      item.addEventListener('mouseout', (e) => { // 마우스가 <li> 요소를 벗어날 때마다 
+        item.style.transform = ``; // <li> 요소에 적용된 어떤 변형도 없애기 위해
+      })
+    });
+  </script>
+</body>
+
+</html>
