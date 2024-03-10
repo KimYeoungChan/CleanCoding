@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Animation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="layer">
+    <img src="plane.png" alt="" class="plane">
+  </div>
+  <section></section>
+  <div class="text">
+    <h2>Welcome To <br /> <span>Thailadn</span></h2>
+  </div>
+  <section class="sec2"></section>
+  <script>
+    //  layer 요소가 스크롤과 함께 가로로 이동하도록 만들어줍니다. 결국에는 패럴랙스 효과를 만들어냅니다.
+    let layer = document.querySelector('.layer'); // layer 변수명 설정
+    window.addEventListener('scroll', function () { // scroll 이벤트 추가
+      let value = window.scrollY; // window.scrollY를 사용하여 창의 수직 스크롤 위치를 가져와 변수 value에 할당
+      layer.style.left = value + 'px'; //  . 현재 스크롤 위치(value)에 'px'를 더하여 값을 설정합니다
+    });
+  </script>
+</body>
+
+</html>
