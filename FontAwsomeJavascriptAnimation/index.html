@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FontAwesome Animation</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div class="box">
+    <div class="group"></div>
+  </div>
+  <script>
+    const group = document.querySelector('.group'); // 변수 선언
+    for (let i = 0; i < 20; i++) { // 20번 반복
+      const containerId = `iconContainer${i}`; // 변수면 지엉
+      const container = document.createElement('div'); // div 생성
+      container.className = 'iconContainer'; // 클래스명 지정
+      container.id = containerId; // id를 containerId로 지정
+      group.appendChild(container); // group에 container 생성
+      addIcons(containerId); // addIcons함수 실행 , containerId라는 매개변수
+    }
+
+    // addIcons 함수 
+    function addIcons(containerId) { // containerId 라는 매개변수
+      const iconContainer = document.getElementById(containerId); // containerId라는 아이디를 가진 변수 생성
+      const Unicode = [`\uf001`, `\uf002`, `\uf003`, `\uf004`, `\uf005`, `\uf006`, `\uf007`, `\uf008`, `\uf009`, `\uf010`]; // Unicode 배열
+
+      for (let i = 0; i < 50; i++) { // 50번 반목
+        const icon = document.createElement('i'); // i 태그 생성
+        icon.classList = 'icon fas' // 클래스 명 지정
+        icon.innerHTML = randomIcons(Unicode); // 내용
+        iconContainer.appendChild(icon); // iconContainer 안에 i 태그 생성
+      }
+    }
+
+    // 랜덤 폰트어썸 유니코드 값 함수
+    function randomIcons(values) {
+      const randomIndex = Math.floor(Math.random() * values.length); // value의 값을 랜덤임랑 곱해서 정수화
+      return values[randomIndex]; // 배열로 변호나
+    }
+  </script>
+</body>
+
+</html>
