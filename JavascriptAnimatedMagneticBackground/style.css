@@ -20,8 +20,8 @@ body {
   align-items: center;
   width: 50px;
   height: 50px;
-  /* border: 1px solid #333; */
-  /* border-radius: 50%; */
+  border: 1px solid #333;
+  border-radius: 50%;
 }
 .box::before {
   content: "";
