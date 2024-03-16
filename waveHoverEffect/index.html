@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wave Hover Effects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // 브라우저가 HTML을 전부 읽고 DOM 트리를 완성하는 즉시 발생합니다. 
+      const boxes = document.querySelectorAll('.box');
+      // '.box' 클래스를 가진 모든 요소를 선택합니다.
+      boxes.forEach(box => {
+        // 각 상자에 대해 다음을 반복합니다.
+        box.addEventListener('mouseover', (event) => {
+          // 마우스가 요소 위에 올라갈 때 실행됩니다.
+          const prevSibling = event.target.previousElementSibling;
+          // 이전 형제 요소를 가져옵니다.
+          const prevPrevSibling = prevSibling ? prevSibling.previousElementSibling : null;
+          // 이전 이전 형제 요소를 가져옵니다. 없으면 null을 반환합니다.
+
+          const nextSibling = event.target.nextElementSibling;
+          // 다음 형제 요소를 가져옵니다.
+          const nextNextSibling = nextSibling ? nextSibling.nextElementSibling : null;
+          // 다음 다음 형제 요소를 가져옵니다. 없으면 null을 반환합니다.
+
+          event.target.classList.add('hovered');
+          // 이 요소에 'hovered' 클래스를 추가합니다.
+
+          if (prevPrevSibling) {
+            prevPrevSibling.classList.add('prev2');
+            // 이전 이전 형제 요소에 'prev2' 클래스를 추가합니다.
+          }
+          if (prevSibling) {
+            prevSibling.classList.add('prev1');
+            // 이전 형제 요소에 'prev1' 클래스를 추가합니다.
+          }
+
+          if (nextNextSibling) {
+            nextNextSibling.classList.add('next2');
+            // 다음 다음 형제 요소에 'next2' 클래스를 추가합니다.
+          }
+          if (nextSibling) {
+            nextSibling.classList.add('next1');
+            // 다음 형제 요소에 'next1' 클래스를 추가합니다.
+          }
+        });
+
+        box.addEventListener('mouseout', (event) => {
+          // 마우스가 요소를 벗어날 때 실행됩니다.
+          const parent = event.target.parentNode;
+          // 부모 요소를 가져옵니다.
+          const siblings = parent.querySelectorAll('.next1, .next2, .prev1, .prev2, .hovered');
+          // 부모의 하위 요소 중 '.next1', '.next2', '.prev1', '.prev2', '.hovered' 클래스를 가진 모든 요소를 선택합니다
+          siblings.forEach(sibling => sibling.classList.remove('next1', 'next2', 'prev1', 'prev2', 'hovered'));
+          // 선택된 요소들로 반복하며 'next1', 'next2', 'prev1', 'prev2', 'hovered' 클래스를 모두 제거합니다.s
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
