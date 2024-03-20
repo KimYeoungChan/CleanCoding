@@ -12,12 +12,73 @@
   <header id="header">
     <a href="#" class="logo">Ramadan</a>
     <ul>
-      <li><a href="#">Home</a></li>
+      <li><a href="#" class="active">Home</a></li>
       <li><a href="#">About</a></li>
       <li><a href="#">Donate</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
   </header>
+  <section id="scene">
+    <h2 id="text">Ramadan Karare</h2>
+    <img src="01.png" alt="" id="img1">
+    <img src="02.png" alt="" id="img2">
+    <img src="03.png" alt="" id="img3">
+    <img src="04.png" alt="" id="img4">
+  </section>
+  <div class="sec">
+    <h2>Parallasx Scrolling Effects</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis quisquam sequi laborum ea quod laudantium
+      dolorem ipsum maxime at magnam, repellendus repudiandae. Illum quisquam nihil dignissimos voluptatibus consequatur
+      libero soluta obcaecati possimus repellendus. Fugiat voluptas error itaque obcaecati vitae nam ad ipsam omnis
+      quas, aut et sint porro ratione id! Ducimus non officiis et quia minus veniam ipsam voluptatum perspiciatis
+      ratione ab, facere id voluptatem amet quos accusantium aut, excepturi quisquam rem alias! Blanditiis, ad repellat
+      autem laborum alias voluptate iste natus dicta aut. Excepturi accusantium quod, vero delectus provident
+      perferendis beatae fugiat sapiente dolorum! Odit corrupti ipsum reiciendis tempore ut in rem voluptatibus labore
+      doloremque, praesentium consequuntur, fugit distinctio vitae esse animi? Numquam accusantium voluptatibus
+      voluptate alias expedita explicabo possimus laboriosam modi minus eveniet, molestiae, repellendus architecto
+      consequuntur! Quaerat, quam porro corporis voluptate ut esse! Qui error at quo nobis quasi. Necessitatibus sit
+      dolor exercitationem architecto nihil nemo voluptatibus aliquam nostrum minus quibusdam explicabo, aliquid impedit
+      maxime, similique obcaecati beatae iure earum quis doloremque fuga asperiores eos. Praesentium corporis quas
+      accusamus officia? Molestias voluptas deleniti, voluptates nobis iure pariatur veritatis quisquam impedit quae
+      consequuntur cumque, quasi labore repudiandae dolorem temporibus at. <br><br> Repellat eaque animi vero sapiente.
+      In eaque
+      provident non aliquid at quo totam. Voluptatibus quasi modi recusandae corporis earum nostrum labore temporibus
+      nam a, sunt doloribus, possimus odio quaerat necessitatibus praesentium dolorum dolores suscipit atque neque
+      reprehenderit? Sit in repellat dignissimos similique hic? Ut quae iure quibusdam exercitationem, eveniet ad
+      impedit omnis vitae saepe consequuntur facilis expedita! Soluta optio exercitationem vitae commodi ducimus veniam?
+      Eius architecto quisquam corrupti eveniet non totam alias obcaecati quam, laboriosam nulla vero dolor eos
+      accusantium praesentium, deserunt ratione ipsum. Quia rerum fuga sint recusandae. Soluta facilis, odio optio harum
+      tenetur placeat magnam in maxime, exercitationem qui libero dolores facere illo voluptates excepturi quaerat
+      dolore molestias dolor? Excepturi, deserunt nam ratione ipsa aliquam delectus! Suscipit asperiores temporibus
+      debitis dignissimos cupiditate reprehenderit accusamus vitae vero, quia eveniet nostrum nam veritatis, unde
+      sapiente quasi cum voluptatibus eius labore explicabo magnam quaerat aperiam. <br><br>Facilis sapiente ipsum a,
+      illo velit
+      vel saepe culpa dolorem, tempore laboriosam at quidem veniam corporis, incidunt vitae libero ut sunt perferendis
+      alias ad nesciunt! Accusantium ad quae molestiae ratione minima omnis illo esse dolores? Repellendus eos non
+      beatae reiciendis praesentium provident veritatis odio sapiente, officia et sit dolores quos sequi possimus, nobis
+      earum. Aliquam, quibusdam minima, sunt temporibus laborum animi a natus id libero earum eum fugiat. Praesentium
+      soluta commodi laborum rem blanditiis quaerat autem aspernatur nesciunt, labore doloribus numquam nulla iure,
+      vitae totam? Veritatis, quod culpa est nesciunt facere ipsum officia perferendis laboriosam itaque similique hic
+      eius quos quidem dolor. Ipsum ea quod id, autem saepe laudantium, animi aliquam ex, soluta sed repellendus neque
+      obcaecati possimus perferendis iusto dicta doloribus mollitia pariatur? Repellat excepturi in tempora vero quo rem
+      dolor quasi fuga sunt laborum labore sapiente perferendis fugit amet, consectetur iusto id eius unde similique
+      ipsum nostrum! Vitae possimus excepturi numquam modi! Cumque velit at, assumenda necessitatibus ipsum laudantium
+      saepe alias eum.</p>
+  </div>
+  <script>
+    let text = document.getElementById('text');
+    let img1 = document.getElementById('img1');
+    let img2 = document.getElementById('img2');
+    let img3 = document.getElementById('img3');
+
+    window.addEventListener('scroll', function () {
+      let value = window.scrollY;
+      text.style.marginTop = value * -1.5 + 'px';
+      img1.style.top = value * 0.75 + 'px';
+      img2.style.top = value * 0.5 + 'px';
+      img3.style.top = value * 0.25 + 'px';
+    })
+  </script>
 </body>
 
 </html>
