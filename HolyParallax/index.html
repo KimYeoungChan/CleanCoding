@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parallax Scrolling Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header id="header">
+    <a href="#" class="logo">Festival</a>
+    <ul>
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </header>
+
+  <section id="scene">
+    <img src="/splash.png" id="splash" />
+    <img src="/text.png" id="text" alt="">
+    <img src="baloon1.png" id="baloon1" alt="">
+    <img src="baloon2.png" id="baloon2" alt="">
+    <img src="baloon3.png" id="baloon3" alt="">
+    <img src="decoration1.png" id="decoration1" alt="">
+    <img src="decoration2.png" id="decoration2" alt="">
+    <img src="color1.png" id="color1" alt="">
+    <img src="color2.png" id="color2" alt="">
+    <img src="watergun1.png" id="watergun1" alt="">
+    <img src="watergun2.png" id="watergun2" alt="">
+  </section>
+
+  <div class="sec">
+    <h2>Parallax Scrolling Effects</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum optio odit officiis, obcaecati consectetur
+      explicabo numquam earum praesentium provident neque reprehenderit molestias? Reprehenderit eveniet minus officia
+      aut velit aliquam a. Ipsum vero deserunt ullam vel maiores libero reiciendis dolorem inventore, voluptatem
+      excepturi accusamus quo fugit autem quod incidunt doloribus ea veniam officia. <br><br> Amet mollitia vel dolorem
+      saepe
+      voluptates totam ut numquam impedit, ipsa suscipit molestiae harum veritatis voluptas! Laudantium reprehenderit
+      sunt ullam facilis maiores ipsum unde veritatis cupiditate quas cumque ipsa delectus commodi mollitia facere
+      architecto beatae, cum placeat doloribus tenetur vero! Blanditiis tempore dolorem a nemo accusamus eaque aperiam
+      eius accusantium, neque ipsum commodi laboriosam quisquam rem hic, reiciendis magni, iusto tempora architecto
+      voluptatibus quam? Cupiditate adipisci quibusdam consequatur, ad minus eum iure necessitatibus error maxime
+      veritatis natus cumque aliquam excepturi hic ex rerum mollitia illum molestiae sapiente ratione! Quidem quod eaque
+      ipsam? Consequuntur repellendus consequatur dicta. Placeat, enim et vitae magnam error optio non vel! Ex inventore
+      fugit deleniti itaque commodi sit incidunt quasi vitae vel, alias ipsam quod beatae! Officiis quidem odio
+      consequatur enim? Labore maxime exercitationem molestias reiciendis facilis dignissimos voluptatibus repellendus
+      repellat deleniti. Consequatur accusantium obcaecati eius nobis quam laudantium autem fugit nihil deserunt!
+      Facilis, consectetur obcaecati hic nulla vel cum sit, fugit inventore natus aliquam tenetur autem sunt eveniet
+      voluptatibus et laudantium, quos non repudiandae ea possimus accusamus illum? Dolore, autem quis commodi laborum
+      nobis quae aspernatur veniam? Libero alias labore harum mollitia illo temporibus in vel esse enim! Corporis ipsum
+      quae aliquam sapiente molestias! Consequatur, placeat in? Nam nulla labore sequi quam. <br><br> Dolore illum
+      dolorum nulla
+      impedit natus? Necessitatibus non consectetur illum, reprehenderit possimus saepe illo, debitis magni, minima unde
+      voluptate! Voluptatem commodi odio expedita officiis saepe delectus aliquid laboriosam cumque ullam et quis, unde
+      nulla eius illum temporibus laudantium, numquam vel velit! Aliquam ad laudantium beatae et iusto? Facere sequi
+      sunt consequuntur minus iure sapiente perspiciatis rerum non earum tempore necessitatibus quisquam odio a optio,
+      distinctio voluptatum nostrum cum amet quis ea suscipit ipsum ut nulla fugit. Deserunt quis illum molestias
+      voluptas omnis reprehenderit neque rem, iure modi cupiditate molestiae sed ad!</p>
+  </div>
+  <script>
+    let splash = document.getElementById('splash');
+    let text = document.getElementById('text');
+    let decoration1 = document.getElementById('decoration1');
+    let baloon1 = document.getElementById('baloon1');
+    let baloon2 = document.getElementById('baloon2');
+    let baloon3 = document.getElementById('baloon3');
+    let color1 = document.getElementById('color1');
+    let color2 = document.getElementById('color2');
+    let watergun1 = document.getElementById('watergun1');
+    let watergun2 = document.getElementById('watergun2');
+
+    window.addEventListener('scroll', function () {
+      let value = window.scrollY;
+      splash.style.top = value * 0.75 + 'px';
+      text.style.top = value * 0.25 + 'px';
+      decoration1.style.top = value * 0.5 + 'px';
+      baloon1.style.top = value * -3.25 + 'px';
+      baloon2.style.top = value * -0.25 + 'px';
+      baloon3.style.top = value * -2 + 'px';
+      color1.style.top = value * -0.25 + 'px';
+      color2.style.top = value * -0.75 + 'px';
+      watergun1.style.left = value * -0.75 + 'px';
+      watergun2.style.left = value * 0.75 + 'px';
+    })
+  </script>
+</body>
+
+</html>
