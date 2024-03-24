@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Clock UI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="clock">
+    <div id="hrDots" style="--clr:#ff2972;"></div>
+    <div id="minDots" style="--clr:#fee800;"></div>
+    <div id="secDots" style="--clr:#04fc43;"></div>
+  </div>
+  <script>
+    function clock() {
+      let secDots = document.getElementById('secDots');
+      let minDots = document.getElementById('minDots');
+      let hrDots = document.getElementById('hrDots');
+
+      var date = new Date();
+      var hours = date.getHours() % 12; // 시간 변환 계산법 12 나누기
+      var amPm = date.getHours() >= 12 ? "PM" : "AM"; // 오전, 오후 나누기
+      hours = hours === 0 ? 12 : hours; // 0 시간은 그냥 시간으로 대체
+      var minute = date.getMinutes();
+      var seconds = date.getSeconds();
+
+      // 초 뒤에 배경
+      var secondsDots = '';
+      for (let i = 1; i < 61; i++) { // 1 ~ 60까지
+        var roation = i * 6; // 6 등분하기 위해서
+        if (i === seconds) {
+          secondsDots += '<div class="dot active" style="transform:rotate(' + roation + 'deg)"></div>'
+        } else {
+          secondsDots += '<div class="dot" style="transform:rotate(' + roation + 'deg)"></div>'
+        }
+      };
+
+      // 분 뒤에 배경
+
+      var minutesDots = '';
+      for (let i = 1; i < 61; i++) { // 1 ~ 60까지
+        var roation = i * 6; // 6 등분하기 위해서
+        if (i === minute) {
+          minutesDots += '<div class="dot active" style="transform:rotate(' + roation + 'deg)"></div>'
+        } else {
+          minutesDots += '<div class="dot" style="transform:rotate(' + roation + 'deg)"></div>'
+        }
+      };
+
+      // 시 뒤에 배경
+      var hoursDots = '';
+      for (let i = 1; i < 13; i++) { // 1 ~ 12까지
+        var roation = i * 30; // 시침만 표시를 할 것이라서
+        if (i === hours) {
+          hoursDots += '<div class="dot active" style="transform:rotate(' + roation + 'deg)"></div>'
+        } else {
+          hoursDots += '<div class="dot" style="transform:rotate(' + roation + 'deg)"></div>'
+        }
+      };
+
+      secDots.innerHTML = secondsDots + '<b>' + amPm + '</b>' + '<h2>' + zero(seconds) + '<br><span>Seconds</span></h2>'
+      minDots.innerHTML = minutesDots + '<h2>' + zero(minute) + '<br><span>Minute</span></h2>'
+      hrDots.innerHTML = hoursDots + '<h2>' + zero(hours) + '<br><span>hours</span></h2>'
+    }
+
+    // 시간,분,초가 한 자리 경우 0 붙이기
+    function zero(number) {
+      if (number < 10) {
+        return '0' + number;
+      }
+      return number;
+    }
+    setInterval(clock, 1000);
+  </script>
+</body>
+
+</html>
