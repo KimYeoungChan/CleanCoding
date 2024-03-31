@@ -188,12 +188,17 @@
   background: #333;
 }
 
+/* 사용자 정의 속성을 정의하기 */
 @property --a {
+  /* 속성에 할당할 수 있는 값의 유형 */
   syntax: "<angle>";
+  /* 속성에 대한 상속여부 */
   inherits: false;
+  /* 초기값은 0도 */
   initial-value: 0deg;
 }
 
+/* 애니메이션 정의 */
 @keyframes animate {
   0% {
     --a: 0deg;
@@ -244,6 +249,8 @@
   transition: 0.5s;
 }
 
+/* 력 상자(input)와 텍스트 영역(textarea)에 포커스가 되거나 유효한 값이 입력되었을 때, 해당 요소 뒤에 있는 형제 요소(span)에 스타일을 적용하는 규칙입니다. */
+
 .container .contentForm form .inputBox input:focus ~ span,
 .container .contentForm form .inputBox textarea:focus ~ span,
 .container .contentForm form .inputBox input:valid ~ span,
@@ -264,6 +271,7 @@
   font-weight: 500;
 }
 
+/* 반응형 */
 @media all and (max-width: 991px) {
   .contact {
     padding: 50px;
