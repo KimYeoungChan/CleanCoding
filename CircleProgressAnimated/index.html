@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Circular Progress</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="circle" data-degree="64" data-color="#ff2972">
+      <h2 class="number">64<span>%</span></h2>
+      <h4>HTMl</h4>
+    </div>
+    <div class="circle" data-degree="58" data-color="#fee800">
+      <h2 class="number">58<span>%</span></h2>
+      <h4>HTMl</h4>
+    </div>
+    <div class="circle" data-degree="95" data-color="#04fc43">
+      <h2 class="number">95<span>%</span></h2>
+      <h4>HTMl</h4>
+    </div>
+  </div>
+  <script>
+    // 브라우저가 HTML을 전부 읽고 DOM 트리를 완성하는 즉시 발생합니다. 
+    document.addEventListener('DOMContentLoaded', function (event) {
+      let circle = document.querySelectorAll('.circle'); // circle 변수 선언
+      circle.forEach(function (progress) { // 선택된 각 원에 대해 함수를 실행
+        let degree = 0; // 초기값
+        var targetDegree = parseInt(progress.getAttribute('data-degree')); // progress 요소의 data-degree 속성 값을 가져와서 정수형으로 변환
+        let color = progress.getAttribute('data-color'); // 각 원의 data-color 속성 값을 가져옵니다
+        let number = progress.querySelector('.number'); // 요소 내에서 클래스가 "number"인 하위 요소를 선택
+
+        var interval = setInterval(function () {
+          degree += 1; // degree 값 1씩 증가
+          if (degree > targetDegree) { // 현재 진행도가 목표 진행도보다 크면
+            clearInterval(interval); // setInterval 반복 중지
+            return; // 함수 종료
+          }
+          // 그라데이션을 생성하고, 그에 따라 진행률에 맞게 색상을 조절합니다
+          progress.style.background = `conic-gradient(${color} ${degree}%, #222 0%)` // 원의 배경색을 설정합니다. 
+          number.innerHTML = degree + '<span>%</span>'; // 원 안에 있는 숫자를 업데이트합니다.
+          number.style.color = color; // 숫자의 색상을 설정합니다. color 변수는 원의 색상을 나타냅니다.
+        }, 50); // 50밀리초마다 실행
+      });
+    });
+  </script>
+</body>
+
+</html>
