@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #1d2b3a;
+  overflow: hidden;
+}
+
+#button {
+  position: relative;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #0a87ff;
+  font-weight: 500;
+  border-radius: 6px;
+  outline: none;
+  border: none;
+  filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5));
+}
+
+.spark {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+  background-color: #0a87ff;
+  z-index: 1;
+  animation: animate 2s linear forwards;
+}
+
+/* 짝수 */
+.spark:nth-child(even) {
+  background: transparent;
+  border: 1px solid #fff;
+}
+
+@keyframes animate {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x), var(--y));
+    /* transform 속성을 --x 및 --y로 지정된 값에 따라 X 및 Y 축으로 이동시킵니다.  */
+  }
+}

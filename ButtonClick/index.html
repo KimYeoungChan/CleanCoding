@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magic Button</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <button id="button">Magic Button</button>
+  <script>
+    // 변수 선언
+    let button = document.getElementById('button');
+
+    // 버튼 클릭 이벤트 함수 실행
+    button.addEventListener('click', function () {
+      for (let i = 0; i < 50; i++) { // 0~49까지
+        let spark = document.createElement('i'); // 요소 생성
+        spark.classList.add('spark'); // spark 클래스 추가
+
+        const randomX = (Math.random() - 0.5) * window.innerWidth; // 무작위로 X 좌표를 계산하여 창의 너비 내에서 스파크가 나타날 위치를 결정
+        const randomY = (Math.random() - 0.5) * window.innerHeight; // 무작위로 y 좌표를 계산하여 창의 너비 내에서 스파크가 나타날 위치를 결정
+
+        // 스파크 요소의 위치를 설정하기 위해 --x와 --y CSS 변수에 계산된 X 및 Y 좌표 값을 설정합니다.
+        spark.style.setProperty('--x', randomX + 'px')
+        spark.style.setProperty('--y', randomY + 'px')
+
+        // 랜덤 사이즈 스파크 요소
+        // 무작위로 스파크의 크기를 결정합니다. 크기는 2에서 10 사이의 랜덤한 값이 됩니다.
+        const randomSize = Math.random() * 8 + 2;
+        // 스파크 요소의 너비와 높이를 설정
+        spark.style.width = randomSize + 'px';
+        spark.style.height = randomSize + 'px';
+
+        // 무작위로 애니메이션 지속 시간을 결정합니다. 지속 시간은 0.5에서 2.5 사이의 랜덤한 값이 됩니다.
+        const duration = Math.random() * 2 + 0.5;
+        // nimate'는 CSS에서 정의된 애니메이션 이름이며, 지속 시간은 2초입니다.
+        spark.style.animation = `animate 2s ease-out forwards`;
+
+        // 파크를 body 요소에 추가하여 화면에 나타납니다.
+        document.body.appendChild(spark);
+
+        // 2초 후에 각 스파크를 제거하는 타이머를 설정합니다.
+        setTimeout(function () {
+          spark.remove();
+        }, 2000)
+      };
+    });
+  </script>
+</body>
+
+</html>
