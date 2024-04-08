@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Eid Animation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h2>Happay Eid-ul-Fitr</h2>
+  <script>
+    let body = document.querySelector('body');
+    let h2 = document.querySelector('h2');
+
+    body.addEventListener('click', function (event) { // 클릭이벤트 함수 
+      for (let i = 0; i < 5; i++) { // 0~5까지 반복실행
+        let spark = document.createElement('i'); // spark 아이템 생성
+        // 클릭 이벤트의 수직 위치(event.clientY)를 기반으로 스파크의 수직 위치를 계산하고 문서 상단에서 본문의 오프셋을 뺍니다.
+        spark.style.top = (event.clientY - body.offsetTop) + 'px';
+        //  클릭 이벤트의 수평 위치(event.clientX)를 기반으로 스파크의 수평 위치를 계산하고 문서 왼쪽에서 본문의 오프셋을 뺍니다.
+        spark.style.left = (event.clientX - body.offsetLeft) + 'px';
+
+        //  -0.5에서 0.5 사이의 난수를 생성하고 여기에 창의 내부 너비를 곱한 다음 1.5로 나눕니다. 이는 스파크의 무작위 수평 변위를 설정하는 데 사용됩니다.
+        let randomX = (Math.random() - 0.5) * window.innerWidth / 1.5;
+        //  이는 스파크에 대한 임의의 수직 변위를 생성합니다.
+        let randomY = (Math.random() - 0.5) * window.innerHeight / 1.5;
+
+        // spark 요소의 CSS 사용자 정의 속성(--randomX)을 계산된 무작위 수평 변위로 설정합니다.
+        // spark 요소의 CSS 사용자 정의 속성(--randomY)을 계산된 무작위 수직 변위로 설정합니다.
+        spark.style.setProperty('--randomX', randomX + 'px');
+        spark.style.setProperty('--randomY', randomY + 'px');
+
+        // 랜덤 사이즈 조절
+        let randomSize = Math.random() * 30 + 2;
+        // 2~32픽셀 사이의 스파크에 대한 임의 크기를 생성합니다.
+        spark.style.width = randomSize + 'px'; // spark 요소의 너비를 임의의 크기로 설정합니
+        spark.style.height = randomSize + 'px'; // park 요소의 높이를 임의의 크기로 설정합니
+        let duration = Math.random() * 2 + 0.5; // 0.5초에서 2.5초 사이의 애니메이션 지속 시간을 무작위로 생성합니다.
+        spark.style.animation = `animate ${duration}s ease-out forwards`;
+        // spark 요소의 CSS 애니메이션 속성을 이즈 아웃 타이밍 기능을 사용하여 임의 지속 시간을 갖는 'animate'라는 애니메이션으로 설정하고 채우기 모드를 전달합니다
+
+        // 색깔 변화
+        let colors = ['#f4034c', '#fff', '#ffeb3b', '#03a9f4']; // 색깔 배열
+        let randomColor = colors[Math.floor(Math.random() * colors.length)]; // colors 배열에서 색상을 무작위로 선택합니다.
+        spark.style.background = randomColor; // spark 요소의 배경색을 무작위로 선택한 색상으로 설정합니다.
+        h2.style.color = randomColor; // h2 요소의 색상을 무작위로 선택한 색상으로 설정합니다.
+
+        body.appendChild(spark); // spark 요소를 body 요소에 추가하여 페이지에 표시되도록 합니다.
+
+        // 2000밀리초(2초) 후에 DOM에서 'spark' 요소를 제거하도록 예약합니다.
+        setTimeout(function () {
+          spark.remove();
+        }, 2000);
+      }
+    });
+  </script>
+</body>
+
+</html>
