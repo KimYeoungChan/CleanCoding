@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check Password Stength</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="box">
+    <h2>Password Strength <span id="text"></span></h2>
+    <input type="password" id="password" placeholder="비밀번호 입력해주세요" />
+    <div class="password-strength"></div>
+    <div class="password-strength"></div>
+    <div class="password-strength"></div>
+  </div>
+
+  <script>
+    // 변수 선언
+    let passwordInput = document.getElementById('password');
+    let passwordStrength = document.querySelectorAll('.password-strength');
+    let text = document.getElementById('text');
+
+    // input 태그에 입력이 되면 이벤트 활성화
+    passwordInput.addEventListener('input', function (event) { // event라는 매개변수이용
+      let password = event.target.value; // 사용자가 입력한 값을 password라는 변수에 넣음
+      let strength = Math.min(password.length, 12); // 12개를 제한을 걸어 둔것이다
+      let degree = strength * 30; // 값을 30을 곱한다
+      // 길이가 4이하이면 #ff2c1c 색, 4개 초과 8이하면 #ff9800색, 그 이상이면 #12ff12색으로 보임
+      let gradientColor = strength <= 4 ? '#ff2c1c' : (strength <= 8 ? '#ff9800' : '#12ff12');
+      // 길이가 4이하이면 약함, 4개 초과 8이하면 중간, 그 이상이면 강함
+      let strengthText = strength <= 4 ? '약함' : (strength <= 8 ? '중간' : '강함');
+
+      // 
+      passwordStrength.forEach((passwordStrength) => {
+        passwordStrength.style.background = `conic-gradient(${gradientColor} ${degree}deg, #1115 ${degree}deg)`;
+        //passwordStrength의 배경을 원뿔모양으로 만든다
+      });
+      // 사용자한테 색깔이랑 텍스트를 보여준다.
+      text.textContent = strengthText;
+      text.style.color = gradientColor;
+    });
+  </script>
+</body>
+
+</html>
