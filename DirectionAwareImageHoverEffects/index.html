@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Image Hover Effects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <img src="/images/img1.jpg" alt="" class="img">
+    <img src="/images/img2.jpg" alt="" class="img">
+    <img src="/images/img3.jpg" alt="" class="img">
+    <img src="/images/img4.jpg" alt="" class="img">
+    <img src="/images/img5.jpg" alt="" class="img">
+    <img src="/images/img6.jpg" alt="" class="img">
+  </div>
+  <script>
+    // .img 클래스를 가진 모든 요소 반복함
+    document.querySelectorAll('.img').forEach((box, index, boxes) => {
+      // 함수의 매개변수 box는 현재 반복되는 요소를 나타냅니다.
+      // index는 현재 요소의 인덱스입니다.
+      // boxes는 forEach가 실행되는 배열 자체입니다.
+      // 요소에 마우스가 올라갔을 경우, 함수 실행
+      box.addEventListener('mouseover', () => {
+        // 선택된 모든 요소를 boxes라고 한다
+        boxes.forEach((b, i) => {
+          // 클래스명이 i가 index보다 작으면 prev 클래스 추가, 같으면 hovered 클래스 추가, i가 index보다 크면 next라는 클래스 추가
+          let className = i < index ? 'prev' : i === index ? 'hovered' : 'next';
+          // 현재 요소에 계산된 클래스 이름을 추가합니다.
+          b.classList.add(className);
+        });
+      });
+      // 선택된 모든 요소에 마우스가 벗어났을 경우
+      box.addEventListener('mouseleave', () => {
+        // 클래스 제거가 되는 것이다
+        boxes.forEach((b) => {
+          b.classList.remove('prev', 'next', 'hovered');
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
