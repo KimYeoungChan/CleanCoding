@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Page Scroll Indicator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="scrollIndicator">
+    <div class="text">
+      <h2 id="textValue"></h2>
+      <small>Page Scrolled</small>
+    </div>
+  </div>
+  <script>
+    // 변수 선언
+    let indicator = document.querySelector('.scrollIndicator');
+    let textValue = document.getElementById('textValue');
+
+    // 현재 문서의 전체 높이에서 보이는 창의 높이를 뺀 값
+    // 스크롤 가능한 최대 높이입니다.
+    let maxHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+    // scroll 이벤트시 함수 실행
+    window.addEventListener('scroll', () => {
+      // 현재 스크롤 위치를 스크롤 가능한 최대 높이로 나눈 비율을 계산
+      let scrollRatio = window.scrollY / maxHeight;
+      // 스크롤 비율에 360을 곱하여 각도를 계산
+      let angle = scrollRatio * 360;
+      // 스크롤 비율에 100을 곱한 후 반올림하여 퍼센트 값을 계산
+      let percent = Math.round(scrollRatio * 100);
+
+      // indicator 요소의 배경을 원형 그라데이션으로 설정합니다. 그라데이션은 파란색에서 빨간색으로 변하며, angle에 따라 변하는 각도를 반영합니다.
+      indicator.style.background = `conic-gradient(from 0deg, #008eff 0%, #f00 ${angle}deg, #000 ${angle}deg)`
+      // textValue의 값을 percent + '<span>%</span>'로 한다
+      textValue.innerHTML = percent + '<span>%</span>';
+    });
+  </script>
+</body>
+
+</html>
