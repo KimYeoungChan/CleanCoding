@@ -1,0 +1,53 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow: hidden;
+  background-image: url(bg1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.container {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container .box {
+  position: relative;
+  top: 0;
+  width: 3.33vw;
+  height: 3.3vw;
+  background-image: url(bg2.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  border: 1px solid #000;
+  box-sizing: border-box;
+}
+
+.container .box.active {
+  background: #ff0;
+  z-index: 1;
+  pointer-events: none;
+  animation: animate 1s linear forwards;
+}
+
+@keyframes animate {
+  /* 애니메이션 시작 시 상자의 투명도는 1이며, 변형이 없는 상태입니다. */
+  0% {
+    opacity: 1;
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  /* 애니메이션 종료 시 상자의 투명도는 0이며, 지정된 위치로 이동하고 회전합니다. */
+  100% {
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) rotate(720deg);
+  }
+}

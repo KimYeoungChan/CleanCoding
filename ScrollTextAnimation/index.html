@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scrolling Text effects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="paragraph">
+    처음 자바스크립트가 만들어졌을 때는 'LiveScript'라는 이름으로 불렸습니다. 그런데, 당시 자바의 인기가 아주 높은 상황이었습니다.
+    관련인들은 자바스크립트를 자바의 ‘동생’ 격인 언어로 홍보하면 도움이
+    될 것이라는 의사결정을 내리고 이름을 바꿨습니다.
+    이름은 자바에서 차용해 왔지만, 자바스크립트는 자바와는 독자적인 언어입니다.
+    꾸준히 발전을 거듭하면서 ECMAScript라는 고유한 명세를 갖춘 독립적인 언어가 되었죠. 자바스크립트는 자바와 아무런 연관이 없습니다.
+  </div>
+  <script>
+    let paragraph = document.querySelector('.paragraph');
+    let spans = paragraph.textContent.trim().split(' ').map(word => `<span>${word}&nbsp;</span>`);
+    paragraph.innerHTML = spans.join('');
+
+    window.addEventListener('scroll', () => {
+      let scrollPosition = window.scrollY;
+      let paragraphTop = paragraph.getBoundingClientRect().top;
+
+      document.querySelectorAll('.paragraph span').forEach((span, index) => {
+        let spanTop = paragraphTop + (span.offsetHeight + 20) * index;
+        span.classList.toggle('reveal', scrollPosition > spanTop - 20);
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reveal Image Effects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container"></div>
+  <script>
+    // 컨테이너 요소를 선택합니다.
+    let container = document.querySelector('.container');
+    // 상자 개수를 설정합니다.
+    let count = 1000;
+    // 지정된 개수만큼 반복하여 상자를 생성합니다.
+    for (let i = 0; i < count; i++) {
+      let box = document.createElement('div');
+      // 상자에 클래스를 할당합니다.
+      box.className = "box";
+      // 컨테이너에 상자를 추가합니다.
+      container.appendChild(box);
+    }
+
+    // 모든 상자 요소를 선택합니다.
+    let boxes = document.querySelectorAll('.box');
+    // 각 상자에 마우스 오버 이벤트를 추가합니다.
+    for (let i = 0; i < boxes.length; i++) {
+      boxes[i].addEventListener('mouseover', (e) => {
+        // 활성화 클래스를 추가하여 스타일을 변경합니다.
+        boxes[i].classList.add('active');
+        // 랜덤한 x, y 위치 값을 설정합니다.
+        boxes[i].style.setProperty('--x', getRandomValue());
+        boxes[i].style.setProperty('--y', getRandomValue());
+
+        function getRandomValue() {
+          // 랜덤한 값을 반환합니다.
+          return `${Math.random() * 2000 - 1000}px`
+        }
+
+        // 랜덤한 각도 값을 설정하여 색상을 변형합니다.
+        let angleValue = Math.random() * 360;
+        boxes[i].style.filter = 'hue-rotate(' + angleValue + 'deg)';
+      });
+    }
+  </script>
+</body>
+
+</html>
