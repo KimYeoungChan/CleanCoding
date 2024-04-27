@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soap & Bubble Animation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h2>Bubble</h2>
+  <img src="soap.png" class="soap">
+  <script>
+    document.addEventListener('mousemove', () => {
+      // 'soap' 클래스를 갖는 요소 선택
+      let soap = document.querySelector('.soap');
+      // 'soap' 요소의 왼쪽과 위쪽 위치를 마우스 위치와 일치하도록 설정
+      soap.style.left = (event.pageX) + 'px';
+      soap.style.top = (event.pageY) + 'px';
+
+      // 새 'i' 요소 생성
+      let i = document.createElement('i');
+      // 'i' 요소의 왼쪽과 위쪽 위치를 마우스 위치와 일치하도록 설정
+      i.style.left = (event.pageX) + 'px';
+      i.style.top = (event.pageY) + 'px';
+      // 'i' 요소의 크기를 1에서 3 사이의 무작위 값으로 설정
+      i.style.scale = `${Math.random() * 2 + 1}`;
+      // 애니메이션 제어를 위한 사용자 정의 속성 '--x'와 '--y' 설정
+      i.style.setProperty('--x', getRandomPosition());
+      i.style.setProperty('--y', getRandomPosition());
+
+      // -200px에서 200px 사이의 무작위 위치 값을 얻는 함수
+      function getRandomPosition() {
+        return `${Math.random() * 400 - 200}px`;
+      }
+
+      // 'i' 요소를 문서의 본문에 추가
+      document.body.appendChild(i);
+
+      // 2000밀리초(2초) 후에 'i' 요소를 본문에서 제거
+      setTimeout(() => {
+        document.body.removeChild(i);
+      }, 2000)
+    });
+  </script>
+</body>
+
+</html>
