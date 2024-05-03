@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hearts Animation on Mousemove</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <script>
+    let prevMouseX = null; // 이전 마우스의 X 좌표를 저장할 변수
+    let prevMouseY = null; // 이전 마우스의 Y 좌표를 저장할 변수
+
+    // 마우스 위치에 대한 함수
+    function heart(event) {
+      if (prevMouseX !== null && prevMouseY !== null) { // 이전 마우스 위치가 null이 아닌 경우
+        let deltaX = event.pageX - prevMouseX; // 현재 X 좌표와 이전 X 좌표의 차이를 계산
+        let deltaY = event.pageY - prevMouseY; // 현재 Y 좌표와 이전 Y 좌표의 차이를 계산
+        let distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY); // 두 점 사이의 거리를 계산
+
+        if (distance >= 100) { // 마우스 이동 거리가 100 이상인 경우
+          createHearts(event.pageX, event.pageY); // 하트 생성 함수 호출
+          prevMouseX = event.pageX; // 현재 마우스의 X 좌표를 이전 X 좌표로 업데이트
+          prevMouseY = event.pageY; // 현재 마우스의 Y 좌표를 이전 Y 좌표로 업데이트
+        }
+      } else { // 이전 마우스 위치가 null인 경우
+        createHearts(event.pageX, event.pageY); // 하트 생성 함수 호출
+        prevMouseX = event.pageX; // 현재 마우스의 X 좌표를 이전 X 좌표로 업데이트
+        prevMouseY = event.pageY; // 현재 마우스의 Y 좌표를 이전 Y 좌표로 업데이트
+      }
+    }
+
+
+
+    // i태그 생성 함수
+    function createHearts(x, y) {
+      let i = document.createElement('i');
+      document.body.appendChild(i);
+      i.style.top = (event.pageY) + 'px';
+      i.style.left = (event.pageX) + 'px';
+      i.style.scale = `${Math.random() * 2 + 1}`;
+      i.style.setProperty('--x', getRandomValue());
+      i.style.setProperty('--y', getRandomValue());
+
+      setTimeout(() => {
+        document.body.removeChild(i)
+      }, 2000);
+
+    };
+
+    // 랜덤 값을 생성하는 함수
+    function getRandomValue() {
+      return `${Math.random() * 400 - 200}px`
+    }
+
+    // 마우스 이동시 이벤트 실행
+    document.addEventListener('mousemove', heart);
+  </script>
+</body>
+
+</html>
