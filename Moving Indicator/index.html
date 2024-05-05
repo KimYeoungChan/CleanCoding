@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awesome Moving Indicator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div id="maker"></div>
+  </div>
+  <script>
+    // 'maker' 요소와 'box' 클래스를 가진 모든 요소를 선택
+    let maker = document.querySelector('#maker');
+    let item = document.querySelectorAll('.box');
+
+    // 마우스 이동에 따라 인디케이터 위치를 조정하는 함수
+    function indicator(e) {
+      maker.style.left = e.offsetLeft + 'px'; // 마우스의 X 좌표를 기준으로 인디케이터의 left 위치 조정
+      maker.style.top = e.offsetTop + 'px'; // 마우스의 Y 좌표를 기준으로 인디케이터의 top 위치 조정
+    };
+
+    // 각각의 'box' 요소에 대해 이벤트 리스너를 추가하여 마우스 이동 이벤트를 처리
+    item.forEach(link => {
+      link.addEventListener('mousemove', (e) => {
+        indicator(e.target); // 마우스 이동에 따른 인디케이터 위치 조정
+      });
+    });
+  </script>
+</body>
+
+</html>
