@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awesome Javascript Effects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="box" style="--img:url(img1.jpg);"></div>
+    <div class="box" style="--img:url(img2.jpg);"></div>
+  </div>
+  <script>
+    // 문서가 완전히 로드되면 실행될 함수를 설정
+    document.addEventListener('DOMContentLoaded', function () {
+      // 클래스가 'box'인 모든 요소를 선택
+      let boxes = document.querySelectorAll('.box');
+      // 각 상자에 대해 반복
+      boxes.forEach(function (box) {
+        let spans = [];
+        // 200개의 span 요소를 생성하여 배열에 추가
+        for (let i = 0; i < 200; i++) {
+          let span = document.createElement('span');
+          spans.push(span);
+          box.appendChild(span); // 각 상자에 span 요소 추가
+          // 각 span의 위치를 설정
+          span.style.top = `${i * 1.5}px`;
+          // 배경 위치를 설정하여 애니메이션 효과 추가
+          span.style.backgroundPositionY = `${i * -1.5}px`;
+          // 임의의 딜레이를 설정하여 transition 지연을 생성
+          span.style.transitionDelay = (Math.random() * 1.5) + 0 + 's';
+        };
+        // 각 상자를 클릭할 때마다 'active' 클래스를 토글하고 span 요소들에 애니메이션을 적용
+        box.addEventListener('click', function () {
+          box.classList.toggle('active');
+          // 각 span 요소에 랜덤한 X 위치와 회전값을 적용하여 애니메이션 효과 생성
+          spans.forEach(function (span) {
+            span.style.setProperty('--x', Math.floor(Math.random() * 400 - 200) + 'px');
+            span.style.setProperty('--r', Math.floor(Math.random() * 360 - 0) + 'deg');
+          });
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
