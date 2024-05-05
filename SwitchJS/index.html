@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Checkbox</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="box"></div>
+    <div class="box"></div>
+  </div>
+  <script>
+    // 문서가 완전히 로드되면 실행될 함수를 설정
+    document.addEventListener('DOMContentLoaded', function () {
+      // 모든 클래스가 'box'인 요소를 선택
+      let boxes = document.querySelectorAll('.box');
+      // 각 상자에 대해 반복
+      boxes.forEach(function (box) {
+        // 각 상자에 대해 40개의 span 요소를 만들어서 배열에 추가
+        let spans = [];
+        for (let i = 0; i < 40; i++) {
+          let span = document.createElement('span');
+          spans.push(span); // 배열에 span 요소 추가
+          box.appendChild(span); // 상자에 span 요소 추가
+          span.style.top = `${i * 1}px`; // 각 span의 위치를 설정
+          // 임의의 딜레이를 설정하여 transition 지연을 생성
+          let randomDelay = (Math.random() * 0.25) + 0;
+          span.style.transitionDelay = randomDelay + 's';
+        };
+        // 각 상자를 클릭할 때마다 'active' 클래스를 토글
+        box.addEventListener('click', function () {
+          box.classList.toggle('active')
+        })
+      });
+    });
+  </script>
+</body>
+
+</html>
