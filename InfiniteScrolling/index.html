@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infinite Page Scrolling</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="container"></div>
+  <script>
+    // 현재 페이지를 나타내는 변수 초기화
+    let currentPage = 1;
+
+    // 이미지를 로드하여 HTML에 추가하는 함수 정의
+    function loadImage() {
+      // 길이가 24인 배열을 생성하고 각 요소에 img 태그 문자열을 할당
+      let image = Array.from({ length: 24 }, (_, index) => {
+        return `<img src ="img${index + 1}.jpg">`;
+      });
+
+      // 'container' ID를 가진 HTML 요소를 선택하여 변수에 저장
+      let container = document.getElementById('container');
+      // 'container' 요소의 innerHTML에 이미지 문자열을 추가
+      container.innerHTML += image.join("")
+    }
+    // 페이지 로드 시 첫 번째 이미지를 추가하기 위해 loadImage 함수 호출
+    loadImage();
+
+
+    // 스크롤 이벤트
+    window, addEventListener('scroll', function () {
+      // 문서의 스크롤 위치, 클라이언트 높이, 전체 문서 높이를 가져옴
+      let(scrollTop, clientHeight, scrollHeight) = document.documentElement;
+
+      // 스크롤이 문서의 맨 아래에 도달했을 때 추가 이미지를 로드
+      if (scrollTop + clientHeight >= scrollHeight) {
+        // 현재 페이지를 증가시킴
+        currentPage++;
+        // 이미지를 추가로 로드
+        loadImage();
+      }
+    });
+  </script>
+</body>
+
+</html>
