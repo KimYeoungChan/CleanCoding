@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #fc4a55;
+  transition: 0.5s;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 25%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.05);
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 25%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.05);
+  z-index: -1;
+}
+
+.slider {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.thumbnail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 2px solid #3335;
+  background: #fff2;
+  border-radius: 10px;
+}
+
+.thumbnail.active {
+  border: 2px solid #333;
+  background: #fff6;
+}
+
+.thumbnail img {
+  width: 100px;
+  scale: 0.75;
+  transition: 0.5s;
+}
+
+.bigImage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bigImage img {
+  max-height: 50vh;
+}
+
+.text {
+  position: absolute;
+  top: 50px;
+  white-space: nowrap;
+  font-size: 12vw;
+  font-weight: 700;
+  pointer-events: none;
+  color: transparent;
+  -webkit-text-stroke: 3px rgba(0, 0, 0, 0.1);
+}

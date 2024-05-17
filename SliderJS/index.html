@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Javascript Slider</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="slider">
+    <div class="thumbnail active" data-text="Apple" data-color="#fc4a55" onclick="shadowBigImage(this)">
+      <img src="apple.png" alt="">
+    </div>
+    <div class="thumbnail" data-text="Dragon Fruits" data-color="#fb6cb2" onclick="shadowBigImage(this)">
+      <img src="dragonFruits.png" alt="">
+    </div>
+    <div class="thumbnail" data-text="Mango" data-color="#ffcc02" onclick="shadowBigImage(this)">
+      <img src="mango.png" alt="">
+    </div>
+    <div class="thumbnail" data-text="Pineapple" data-color="#ffb42b" onclick="shadowBigImage(this)">
+      <img src="pineApple.png" alt="">
+    </div>
+    <div class="thumbnail" data-text="watermelon" data-color="#92ba3c" onclick="shadowBigImage(this)">
+      <img src="wateremlon.png" alt="">
+    </div>
+  </div>
+  <h2 class="text">Apple</h2>
+  <div class="bigImage">
+    <img src="apple.png" id="bigImage" alt="">
+  </div>
+  <script>
+
+    // 큰 이미지 바뀌는 함수  
+    function shadowBigImage(thumbnail) {
+      // 변수 선언
+      let bigImage = document.getElementById('bigImage');
+      let thumb = thumbnail.querySelector('img');
+      let h2 = document.querySelector('h2');
+      // 클릭된 요소의 색상, 텍스트
+      let color = thumbnail.dataset.color;
+      let text = thumbnail.dataset.text;
+
+      // 썸네일 이미지 속성을 src로 변경
+      bigImage.src = thumb.src;
+      // 페이지의 배경 색상을 클릭된 썸네일의 data-color 속성 값으로 변경합니다.
+      document.body.style.backgroundColor = color;
+      // 페이지 내의 첫 번째 <h2> 요소의 텍스트 내용을 클릭된 썸네일의 data-text 속성 값으로 변경합니다.
+      h2.textContent = text;
+
+      let thumbnails = document.querySelectorAll('.thumbnail');
+      // 모든 썸네일 요소에서 'active' 클래스를 제거합니다.
+      thumbnails.forEach((thumb) => thumb.classList.remove('active'));
+
+      // 클릭된 썸네일 요소에 'active' 클래스를 추가합니다.
+      thumbnail.classList.add('active');
+    }
+  </script>
+</body>
+
+</html>
