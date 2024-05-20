@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Background Animation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <section>
+    <p class="numbers">78929123487894587891231479123123
+      78929123487894587891231479123123
+      78929123487894587891231479123123
+      78929123487894587891231479123123
+      78929123487894587891231479123123
+      78929123487894587891231479123123
+      78929123487894587891231479123123
+      78929123487894587891231479123123
+      78929123487894587891231479123123
+      78929123487894587891231479123123
+      78929123487894587891231479123123
+      78929123487894587891231479123123
+      78929123487894587891231479123123
+      78929123487894587891231479123123
+      78929123487894587891231479123123
+      78929123487894587891231479123123
+      78929123487894587891231479123123
+      78929123487894587891231479123123
+    </p>
+  </section>
+  <script>
+    let numbers = document.querySelector('.numbers');
+    let numString = numbers.textContent;
+    let splitNum = numString.split("");
+
+    numbers.textContent = "";
+    for (let i = 0; i < splitNum.length; i++) {
+      numbers.innerHTML += "<span>" + splitNum[i] + "</span>"
+    }
+  </script>
+</body>
+
+</html>
