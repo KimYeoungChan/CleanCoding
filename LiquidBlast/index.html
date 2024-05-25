@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquid Blast</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="circle"></div>
+  <svg>
+    <filter id="gooey">
+      <!-- 필터 효과들 -->
+      <!-- 입력 이미지를 가우시안 블러 처리합니다. -->
+      <!-- 입력 그래픽 소스를 지정합니다.  -->
+      <!-- stdDeviation는 블러의 표준 편차를 설정 -->
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+      <!-- 색상 변환 -->
+      <!-- 4x5 행렬을 정의합니다. -->
+      <!-- 첫 번째 행 : 빨간색 -->
+      <!-- 두 번째 행 : 녹색색 -->
+      <!-- 세 번째 행 : 파란색 -->
+      <!-- 네 번째 행 : 투명도 조절 -->
+      <feColorMatrix values="
+        1 0 0 0 0 
+        0 1 0 0 0
+        0 0 1 0 0
+        0 0 0 50 -10" />
+    </filter>
+  </svg>
+  <script>
+    // 'circle' 클래스를 가진 요소를 선택합니다.
+    let circle = document.querySelector('.circle');
+
+    // 'circle' 요소에 클릭 이벤트 리스너를 추가합니다.
+    circle.addEventListener('click', function () {
+
+      // 클릭할 때마다 50개의 입자를 생성합니다.
+      for (let i = 0; i < 50; i++) {
+
+        // 새로운 <i> 요소를 생성하고 'particles' 클래스를 추가합니다.
+        let particles = document.createElement('i');
+        particles.classList.add('particles');
+
+        // 랜덤한 X와 Y 좌표를 계산하여 CSS 커스텀 속성으로 설정합니다.
+        let randomX = (Math.random() - 0.5) * window.innerWidth;
+        let randomY = (Math.random() - 0.5) * window.innerHeight;
+        particles.style.setProperty('--x', randomX + 'px');
+        particles.style.setProperty('--y', randomY + 'px');
+
+        // 랜덤한 크기를 계산하여 입자의 너비와 높이로 설정합니다.
+        let randomSize = Math.random() * 60 + 10;
+        particles.style.width = randomSize + 'px';
+        particles.style.height = randomSize + 'px';
+
+        // 랜덤한 지속 시간을 계산하여 입자 애니메이션의 지속 시간으로 설정합니다.
+        let duration = Math.random() * 3 + 2;
+        particles.style.animation = `animate ${duration}s ease forwards`;
+
+        // <i> 요소를 문서의 body에 추가합니다.
+        document.body.appendChild(particles);
+
+        // 5초 후에 입자를 문서에서 제거합니다.
+        setTimeout(function () {
+          particles.remove();
+        }, 5000)
+      }
+    });
+  </script>
+</body>
+
+</html>
