@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magnetic Hover Effects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="card" style="--clr:#ff6464;">01</div>
+    <div class="card" style="--clr:#6fc0ff;">02</div>
+    <div class="card" style="--clr:#48e365;">03</div>
+    <div class="card" style="--clr:#cb4af7;">04</div>
+  </div>
+  <script>
+    // 'card' 클래스를 가진 모든 요소를 선택하고 각 요소에 이벤트 리스너를 추가합니다
+    let card = document.querySelectorAll('.card').forEach(cards => {
+      // 각 카드에 'mousemove' 이벤트 리스너를 추가합니다
+      cards.addEventListener('mousemove', (e) => {
+        // 카드 내부에서 마우스의 위치를 가져옵니다
+        let x = e.offsetX;
+        let y = e.offsetY;
+        // 카드의 너비와 높이를 가져옵니다
+        let cardWidth = cards.clientWidth;
+        let cardHeight = cards.clientHeight;
+        // 카드 중심에서의 위치 차이를 계산합니다
+        let posX = (x - cardWidth / 2);
+        let posY = (y - cardHeight / 2);
+        // 마우스 위치에 따라 카드를 변형(transform)합니다
+        cards.style.transform = `translateX(${posX}px) translateY(${posY}px)`;
+      })
+      // 각 카드에 'mouseout' 이벤트 리스너를 추가하여 변형을 초기화합니다
+      cards.addEventListener('mouseout', (e) => {
+        // 마우스가 카드를 떠날 때 변형을 초기 상태로 리셋합니다
+        cards.style.transform = ``;
+      })
+    })
+  </script>
+</body>
+
+</html>
