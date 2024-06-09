@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infinite Image Slider</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="box">
+    <div class="item">
+      <img src="img1.jpg" alt="">
+    </div>
+    <div class="item">
+      <img src="img2.jpg" alt="">
+    </div>
+    <div class="item">
+      <img src="img3.jpg" alt="">
+    </div>
+    <div class="item">
+      <img src="img4.jpg" alt="">
+    </div>
+    <div class="item">
+      <img src="img5.jpg" alt="">
+    </div>
+    <div class="item">
+      <img src="img6.jpg" alt="">
+    </div>
+    <div class="item">
+      <img src="img7.jpg" alt="">
+    </div>
+  </div>
+  <div class="buttons">
+    <span class="perv"></span>
+    <span class="next"></span>
+  </div>
+  <script>
+    // 'prev' 및 'next' 버튼을 선택
+    let prev = document.querySelector('.perv');
+    let next = document.querySelector('.next');
+
+    // 'next' 버튼에 클릭 이벤트 리스너를 추가
+    next.addEventListener('click', function () {
+      // 모든 '.item' 요소를 선택하여 'items' 변수에 NodeList로 저장
+      let items = document.querySelectorAll('.item');
+      // 첫 번째 '.item' 요소를 '.box'의 마지막 자식으로 이동시킴
+      document.querySelector('.box').appendChild(items[0]);
+    });
+
+    // 'prev' 버튼에 클릭 이벤트 리스너를 추가
+    prev.addEventListener('click', function () {
+      // 모든 '.item' 요소를 선택하여 'items' 변수에 NodeList로 저장
+      let items = document.querySelectorAll('.item');
+      // 마지막 '.item' 요소를 '.box'의 첫 번째 자식으로 이동시킴
+      document.querySelector('.box').prepend(items[items.length - 1]);
+    });
+  </script>
+</body>
+
+</html>
