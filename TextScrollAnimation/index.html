@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Scroll Animation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="box">
+    <h2>Modern Text Scroll Animation</h2>
+    <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, esse. Libero totam ipsa
+      repudiandae fugit
+      consequatur possimus aut ratione laboriosam eligendi deleniti, corrupti, unde distinctio porro iure debitis omnis
+      aperiam quidem quisquam! Ad fugit pariatur iste molestiae soluta enim maxime.</p>
+  </div>
+  <script>
+
+    // // 클래스가 'text'인 요소를 선택
+    let textElement = document.querySelector('.text');
+    // 선택한 요소의 텍스트 내용을 가져옴
+    let textContent = textElement.textContent;
+    // 텍스트 요소의 내부 HTML을 비움
+    textElement.innerHTML = '';
+
+    // 텍스트 내용의 각 문자를 반복
+    for (let char of textContent) {
+      // 새로운 span 요소를 만듦
+      let span = document.createElement('span');
+      // 현재 문자를 span의 텍스트 내용으로 설정
+      span.textContent = char;
+      // span을 텍스트 요소에 추가
+      textElement.appendChild(span);
+    }
+
+    // 텍스트 요소의 자식인 모든 span 요소를 선택
+    let spans = textElement.querySelectorAll('span');
+    // 스크롤 이벤트리스너
+    window.addEventListener('scroll', () => {
+      // 세로 스크롤 거리를 가져옴
+      let scrollDistance = window.scrollY;
+      // 각 span 요소를 반복
+      spans.forEach((span, index) => {
+        // 스크롤 거리가 (index + 1) * 10 이상인 경우
+        if (scrollDistance >= (index + 1) * 10) {
+          // span 요소에 'active' 클래스를 추가
+          span.classList.add('active');
+        } else {
+          // span 요소에서 'active' 클래스를 제거
+          span.classList.remove('active')
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
