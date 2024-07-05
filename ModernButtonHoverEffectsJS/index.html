@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern button Hover Effects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <a href="#">Hover Me</a>
+  <a href="#">Click Me</a>
+  <a href="#">Awesome</a>
+  <script>
+    // 전체 a 태그 선택
+    document.querySelectorAll('a').forEach((link) => {
+      // 각 링크에 대해 그 텍스트 콘텐츠를 개별 문자로 나눕니다
+      link.innerHTML = link.innerText.split('').map((letters, i) => {
+        // 현재 문자가 공백인지 확인합니다
+        if (letters === ' ') {
+          // 공백인 경우, 공백을 그대로 반환합니다
+          return ' ';
+        } else {
+          // 공백이 아닌 경우, 문자를 <span> 태그로 감쌉니다
+          // 문자 인덱스에 따라 transition delay를 적용합니다
+          return `<span style="transition-delay:${i * 24}ms">${letters}</span>`
+        }
+        // 문자 배열을 다시 하나의 문자열로 결합합니다
+      }).join('');
+    })
+  </script>
+</body>
+
+</html>
