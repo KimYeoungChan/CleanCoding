@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Scroll Animation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="box">
+    <h2 class="text">Scroll to See Magic...</h2>
+  </div>
+  <script>
+    let textElement = document.querySelector('.text');
+    // 선택한 요소의 텍스트 콘텐츠를 가져옵니다.
+    let textContent = textElement.textContent;
+    console.log(textContent)
+    textContent.innerText = '';
+
+    // span 요소를 저장할 빈 배열을 초기화합니다.
+    let spans = [];
+    // 텍스트 콘텐츠의 각 문자에 대해 반복합니다.
+    for (let char of textContent) {
+      // 각 문자에 대한 span 요소를 만듭니다.
+      let span = document.createElement('span');
+      // span의 텍스트 콘텐츠를 현재 문자로 설정합니다.
+      span.textContent = char;
+      // span을 text 요소에 추가합니다.
+      textElement.appendChild(span);
+      // span을 spans 배열에 추가합니다.
+      spans.push(span);
+    };
+
+    window.addEventListener('scroll', () => {
+      // 사용자가 페이지 상단에서 스크롤한 거리를 가져옵니다.
+      let scrollDistance = window.scrollY;
+      // 각 span 요소에 대해 반복합니다.
+      spans.forEach((span, index) => {
+        // 스크롤 거리가 (index + 1) * 50 이상인 경우.
+        if (scrollDistance >= (index + 1) * 50) {
+          // span 요소를 오른쪽으로 index * 20 픽셀만큼 이동합니다.
+          span.style.transform = `translate(${index * 20}px, 0)`;
+          // span 요소에 'active' 클래스를 추가합니다.
+          span.classList.add('active');
+        } else {
+          // span 요소를 뷰포트 내의 임의 위치로 이동합니다.
+          span.style.transform = `translate(${Math.random() * 100 - 50}vw, ${Math.random() * 100 - 50}vh)`;
+          // span 요소에서 'active' 클래스를 제거합니다.
+          span.classList.remove('active')
+        }
+      });
+    });
+
+
+    // 랜덤 위치 수정하기
+    // 스팬의 위치를 초기화하기 위해 스크롤 이벤트를 디스패치합니다.
+    window.dispatchEvent(new Event('scroll'))
+  </script>
+</body>
+
+</html>
