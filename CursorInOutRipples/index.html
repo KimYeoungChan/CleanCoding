@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursor In & Out Ripple Effects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="box" style="--clr:#2196f3;"></div>
+    <div class="box" style="--clr:#f32175;"></div>
+    <div class="box" style="--clr:#ff7f20;"></div>
+    <div class="box" style="--clr:#9bdc29;"></div>
+  </div>
+  <script>
+    let box = document.querySelectorAll('.box');
+    box.forEach(box => {
+      // 'box' 요소에 'mousemove' 이벤트 리스너를 추가합니다.
+      box.onmousemove = function (e) {
+        // 'box' 요소의 왼쪽 경계로부터의 마우스 X 좌표를 계산합니다.
+        let x = e.pageX - box.offsetLeft;
+        // 'box' 요소의 위쪽 경계로부터의 마우스 Y 좌표를 계산합니다
+        let y = e.pageY - box.offsetTop;
+
+        // 계산된 X 좌표 값을 '--x' CSS 변수에 설정합니다.
+        box.style.setProperty('--x', x + 'px');
+        // 계산된 Y 좌표 값을 '--y' CSS 변수에 설정합니다.
+        box.style.setProperty('--y', y + 'px');
+      };
+    });
+  </script>
+</body>
+
+</html>

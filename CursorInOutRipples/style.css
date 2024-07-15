@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #333;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.container .box {
+  position: relative;
+  width: 250px;
+  height: 300px;
+  background: #4a4a4a;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.container .box::before {
+  content: "";
+  position: absolute;
+  /* 가상 요소의 위쪽 위치를 CSS 변수 '--y' 값으로 설정합니다. */
+  top: var(--y);
+  /* 가상 요소의 왼쪽 위치를 CSS 변수 '--x' 값으로 설정합니다. */
+  left: var(--x);
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  /* 가상 요소의 배경 색상을 CSS 변수 '--clr' 값으로 설정합니다. */
+  background: var(--clr);
+  border-radius: 50%;
+  /* 가상 요소에 1초 동안의 전환 효과를 적용합니다. 'top'과 'left'는 즉시 변경됩니다. */
+  transition: 1s, top 0s, left 0s;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.container .box:hover::before {
+  width: 400px;
+  height: 400px;
+}
