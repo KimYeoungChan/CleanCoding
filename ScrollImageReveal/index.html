@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Scroll Effects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <section>
+    <h2>Scroll Down</h2>
+    <div class="image-container"></div>
+  </section>
+  <script>
+    let imageUrl = 'img.jpg'; // 사용할 이미지 URL
+    let container = document.querySelector('.image-container'); // 이미지 슬라이스를 추가할 컨테이너
+    let sliceWidth = 20; // 슬라이스의 너비
+    let sliceHeight = 20; // 슬라이스의 높이
+    let rows = 20; // 슬라이스 행 개수
+    let cols = 20; // 슬라이스 열 개수
+    let slices = []; // 슬라이스 요소들을 저장할 배열
+
+    // 슬라이스 생성
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        let span = document.createElement('span'); // 새로운 span 요소 생성
+        span.classList.add('image-slice'); // 클래스 추가
+        span.style.top = `${row * sliceHeight}px`; // 슬라이스의 상단 위치 설정
+        span.style.left = `${col * sliceWidth}px`; // 슬라이스의 좌측 위치 설정
+        span.style.width = `${sliceWidth}px`; // 슬라이스의 너비 설정
+        span.style.height = `${sliceHeight}px`; // 슬라이스의 높이 설정
+        span.style.backgroundImage = `url(${imageUrl})`; // 배경 이미지 설정
+        span.style.backgroundPosition = `-${col * sliceWidth}px -${row * sliceHeight}px`; // 배경 이미지 위치 설정
+        container.appendChild(span); // 컨테이너에 슬라이스 추가
+        slices.push(span); // 슬라이스 배열에 추가
+      }
+    }
+
+    // 스크롤 이벤트
+    window.addEventListener('scroll', function () {
+      let scrollPosition = window.scrollY; // 현재 스크롤 위치
+      slices.forEach((slice, index) => {
+        if (scrollPosition >= index * 1) {
+          // 스크롤 위치가 인덱스보다 크거나 같으면 슬라이스를 제자리로 이동
+          slice.style.transform = `translate(0,0) rotate(0deg)`;
+        } else {
+          // 그렇지 않으면 슬라이스를 무작위로 이동하고 회전
+          slice.style.transform = `translate(${Math.random() * 100 - 50}vw,${Math.random() * 100 - 50}vh) rotate(${Math.random() * 360}deg)`;
+        }
+      });
+    });
+
+    window.dispatchEvent(new Event('scroll')); // 초기 스크롤 이벤트 트리거
+  </script>
+</body>
+
+</html>
