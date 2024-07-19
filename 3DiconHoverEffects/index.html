@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Icon Hover Effects</title>
+  <link rel="stylesheet" href="stlye.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <ul class="sci">
+    <li style="--clr:#ff0000;"><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+    <li style="--clr:#333333;"><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+    <li style="--clr:#00a783;"><a href="#"><i class="fa-brands fa-whatsapp"></i></a></li>
+  </ul>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"
+    integrity="sha512-wC/cunGGDjXSl9OHUH0RuqSyW4YNLlsPwhcLxwWW1CR4OeC2E1xpcdZz2DeQkEmums41laI+eGMw95IJ15SS3g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    VanillaTilt.init(document.querySelectorAll(".sci li a"), {
+      max: 30,
+      speed: 400,
+      glare: true
+    });
+  </script>
+  <script>
+    let list = document.querySelectorAll('.sci li');
+    let bg = document.querySelector('body');
+    // list에 있는 각 요소에 대해 반복문을 실행합니다.
+    list.forEach(element => {
+      // 각 요소에 마우스가 들어올 때 실행될 이벤트 리스너를 추가합니다.
+      element.addEventListener('mouseenter', function (event) {
+        // 현재 요소의 --clr CSS 변수를 가져와 color 변수에 저장합니다.
+        let color = event.target.style.getPropertyValue('--clr');
+        // body 요소의 배경 색상을 가져온 color 값으로 변경합니다.
+        bg.style.backgroundColor = color;
+      });
+
+      // 각 요소에서 마우스가 나갈 때 실행될 이벤트 리스너를 추가합니다.
+      element.addEventListener('mouseleave', function (event) {
+        // body 요소의 배경 색상을 흰색(#fff)으로 변경합니다.
+        bg.style.backgroundColor = '#fff';
+      });
+    });
+  </script>
+</body>
+
+</html>
