@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquid Box</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <section>
+    <div class="box"></div>
+    <h2>Liquid</h2>
+  </section>
+  <svg>
+    <filter id="gooey">
+      <!-- GaussianBlur 필터를 추가하여 그래픽 소스를 흐리게 만듭니다. -->
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+      <!-- ColorMatrix 필터를 추가하여 색상 매트릭스를 변경합니다. -->
+      <feColorMatrix values="
+      1 0 0 0 0
+      0 1 0 0 0
+      0 0 1 0 0
+      0 0 0 50 -10" />
+    </filter>
+  </svg>
+
+  <script>
+    function Liquid() {
+      // '.box' 클래스를 가진 요소를 선택합니다.
+      let box = document.querySelector('.box');
+      // 새로운 'div' 요소를 생성합니다.
+      let e = document.createElement('div');
+      // 생성된 'div' 요소에 'drops' 클래스를 추가합니다.
+      e.setAttribute('class', 'drops');
+      // 생성된 'div' 요소를 'box' 요소의 자식으로 추가합니다.
+      box.appendChild(e);
+
+      // 랜덤한 크기를 생성하여 'div' 요소의 너비를 설정합니다.
+      let size = Math.random() * 100;
+      e.style.width = 15 + size + 'px';
+      // 'box' 요소의 너비를 가져옵니다.
+      let BoxWidth = box.clientWidth;
+      // 'div' 요소의 왼쪽 위치를 랜덤하게 설정합니다.
+      e.style.left = Math.random() * BoxWidth + 'px';
+
+      // 5초 후에 'div' 요소를 'box' 요소에서 제거합니다.
+      setTimeout(function () {
+        box.removeChild(e);
+      }, 5000)
+    }
+
+    // 200밀리초마다 'Liquid' 함수를 실행하여 새로운 'div' 요소를 생성합니다.
+    setInterval(function () {
+      Liquid();
+    }, 200)
+  </script>
+</body>
+
+</html>
