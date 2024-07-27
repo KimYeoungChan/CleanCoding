@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ink Cursor</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+  <div class="cursor"></div>
+  <script>
+    let body = document.querySelector('body');
+    body.onclick = function () {
+      body.classList.toggle('dark');
+    };
+
+    let cursor = document.querySelector('.cursor'); // .cursor 클래스를 가진 요소를 선택하여 변수 cursor에 저장
+    for (let i = 0; i < 200; i++) { // 200번 반복하는 루프 시작
+      let circle = document.createElement('div'); // 새로운 div 요소 생성하여 변수 circle에 저장
+      circle.classList.add('circle'); // 생성한 div 요소에 'circle' 클래스 추가
+      cursor.appendChild(circle); // cursor 요소에 circle 요소를 자식으로 추가
+    }
+    document.body.addEventListener('mousemove', e => { // body 요소에 마우스 이동 이벤트 리스너 추가
+      gsap.to(".circle", { // 모든 .circle 요소에 대해 gsap 애니메이션 적용
+        x: e.clientX, // x 좌표를 현재 마우스 x 위치로 설정
+        y: e.clientY, // y 좌표를 현재 마우스 y 위치로 설정
+        stagger: -0.0025, // 각 요소 애니메이션에 약간의 지연 시간 추가
+        scale: (i, target) => { // 각 요소의 크기를 계산하는 함수 정의
+          return 1 + (i * (2 / 200)); // 요소의 인덱스에 따라 점진적으로 크기 증가
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>
