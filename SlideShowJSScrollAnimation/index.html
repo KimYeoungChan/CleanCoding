@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Sildeshow</title>
+  </head>
+  <body>
+    <section data-start="0" data-end="1000">
+      <img src="img1.jpg" alt="" />
+    </section>
+    <section data-start="1000" data-end="2000">
+      <img src="img2.jpg" alt="" />
+    </section>
+    <section data-start="2000" data-end="3000">
+      <img src="img3.jpg" alt="" />
+    </section>
+    <section data-start="3000" data-end="4000">
+      <img src="img4.jpg" alt="" />
+    </section>
+    <section data-start="4000" data-end="5000">
+      <img src="img5.jpg" alt="" />
+    </section>
+    <script>
+      document.addEventListener("scroll", () => {
+        // 모든 섹션 요소 선택
+        let sections = document.querySelectorAll("section");
+        // 현재 스크롤 위치 가져오기
+        let scrollPosition = window.scrollY;
+        // 각 섹션에 대해 반복
+        sections.forEach((section) => {
+          // 섹션의 시작과 끝 위치 가져오기
+          let start = parseInt(section.getAttribute("data-start"));
+          let end = parseInt(section.getAttribute("data-end"));
+
+          // 현재 스크롤 위치가 섹션 범위 내에 있는지 확인
+          if (scrollPosition >= start && scrollPosition <= end) {
+            // start보다 크거나 end보다 작은 범위
+            // 진행도 계산
+            let progress = (scrollPosition - start) / (end - start); // 스크롤위치에서 시작점 뺀 값을 끝지점에서 시작지점을 뺀 값을 나누면 됨
+            // clip-path 크기 계산
+            let clipPathSize = Math.max(0, 1000 * progress); //  matx(최소, 최대)
+            // clip-path 적용
+            section.style.clipPath = `circle(${clipPathSize}px at center)`;
+          } else if (scrollPosition < start) {
+            // 스크롤 위치가 시작 전이면 완전히 숨김
+            section.style.clipPath = `circle(0px at circle)`;
+          } else if (scrollPosition > end) {
+             // 스크롤 위치가 끝을 지나면 완전히 표시
+            section.style.clipPath = `circle(1000px at circle)`;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
