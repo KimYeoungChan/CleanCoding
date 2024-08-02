@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Cube</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="scene">
+        <!-- 3D 큐브 컨테이너 -->
+        <div class="cube">
+             <!-- 큐브의 각 면을 정의 -->
+            <div class="face front"><div class="grid"></div></div>
+            <div class="face back"><div class="grid"></div></div>
+            <div class="face left"><div class="grid"></div></div>
+            <div class="face right"><div class="grid"></div></div>
+            <div class="face top"><div class="grid"></div></div>
+            <div class="face bottom"><div class="grid"></div></div>
+        </div>
+    </div>
+    <script>
+        // DOMContentLoaded 이벤트 리스너 추가
+         document.addEventListener('DOMContentLoaded', function() {
+            let cube = document.querySelector('.cube');
+            let grids = document.querySelectorAll('.grid');
+
+            // 각 그리드에 100개의 span 요소 추가
+            grids.forEach(grid => {
+                for(let i = 0; i < 100; i++) {
+                    let span = document.createElement('span');
+                    grid.appendChild(span);
+                };
+            });
+
+            // 랜덤으로 클래스 추가하는 함수
+            function addRandomActiveClass() {
+                grids.forEach(grid => {
+                    let spans = document.querySelectorAll('span');
+                    let randomIndex = Math.floor(Math.random() * spans.length);
+                        spans[randomIndex].classList.add('active');
+
+                    // 일정 시간 후 클래스 제거
+                    let removeTime = Math.floor(Math.random() * 1000) + 500;
+                    setTimeout(() => {
+                        spans[randomIndex].classList.remove('active');
+                    },removeTime)
+                });
+            };
+
+            // 랜덤 시간 간격으로 addRandomActiveClass 함수 호출
+            function randomInterval() {
+                let interval = Math.floor(Math.random() * 200) + 100;
+                addRandomActiveClass();
+                setTimeout(randomInterval, interval);
+            };
+            randomInterval();
+
+            // 마우스 움직임에 따라 큐브 회전
+            document.addEventListener('mousemove', (e) => {
+                let x = e.clientX / window.innerWidth - 0.5;
+                let y = e.clientY / window.innerHeight - 0.5;
+                cube.style.transform = `rotateX(${y * 360}deg) rotateY(${x * 360}deg)`;
+            });
+        });
+    </script>
+</body>
+</html>
