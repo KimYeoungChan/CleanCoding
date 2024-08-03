@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrow</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { // DOMContentLoaded 이벤트가 발생하면 콜백 함수 실행
+      let container = document.querySelector('.container'); // container 클래스를 가진 요소를 선택
+      for (let i = 0; i < 30; i++) { // 30번 반복
+        let arrow = document.createElement('div'); // 새로운 div 요소 생성
+        arrow.classList.add('arrow'); // div 요소에 arrow 클래스 추가
+        arrow.style.top = `${Math.random() * 100}vh`; // arrow 요소의 top 위치를 화면 높이의 0%에서 100% 사이의 랜덤값으로 설정
+        arrow.style.left = `${Math.random() * 100}vw`; // arrow 요소의 left 위치를 화면 너비의 0%에서 100% 사이의 랜덤값으로 설정
+        container.appendChild(arrow); // container 요소에 arrow 요소를 추가
+      };
+
+      document.querySelector('body').addEventListener('mousemove', rotation); // body 요소에 마우스 이동 이벤트 리스너 추가, rotation 함수 호출
+
+      function rotation(event) { // rotation 함수 정의, 이벤트 객체를 인자로 받음
+        let arw = document.querySelectorAll('.arrow'); // 모든 arrow 클래스를 가진 요소 선택
+        arw.forEach(function (arw) { // 각 arrow 요소에 대해 반복
+          let x = (arw.getBoundingClientRect().left) + (arw.clientWidth / 2); // arrow 요소의 x축 중심 좌표 계산
+          let y = (arw.getBoundingClientRect().top) + (arw.clientHeight / 2); // arrow 요소의 y축 중심 좌표 계산
+          let radian = Math.atan2(event.pageX - x, event.pageY - y); // 마우스 포인터와 arrow 요소 중심 간의 각도 계산
+          let rot = (radian * (180 / Math.PI) * -1) + 270; // 라디안을 각도로 변환하고 회전값 계산
+          arw.style.transform = "rotate(" + rot + "deg)"; // arrow 요소의 transform 속성을 회전 각도로 설정
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
