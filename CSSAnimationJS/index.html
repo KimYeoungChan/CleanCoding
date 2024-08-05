@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Animation Effects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // HTML 문서가 완전히 로드되고 파싱될 때까지 기다립니다.
+      let container = document.querySelector('.container');
+      // 클래스 'container'를 가진 첫 번째 요소를 선택하고 이를 'container' 변수에 저장합니다.
+      for (let j = 0; j < 4; j++) {
+        // 'j'가 0에서 3까지 4번 반복합니다.
+        let loader = document.createElement('div');
+        // 새로운 'div' 요소를 생성하고 이를 'loader' 변수에 저장합니다.
+        loader.classList.add('loader');
+        // 'loader' div에 클래스 'loader'를 추가합니다.
+        loader.style.setProperty('--j', j);
+        // 'loader' div에 CSS 사용자 정의 속성 '--j'를 'j'의 값으로 설정합니다.
+        for (let i = 1; i <= 20; i++) {
+          // 'i'가 1에서 20까지 20번 반복합니다.
+          let span = document.createElement('span');
+          // 새로운 'span' 요소를 생성하고 이를 'span' 변수에 저장합니다.
+          span.style.setProperty('--i', i);
+          // 'span' 요소에 CSS 사용자 정의 속성 '--i'를 'i'의 값으로 설정합니다.
+          loader.appendChild(span);
+          // 'span' 요소를 'loader' div의 자식으로 추가합니다.
+        }
+        container.appendChild(loader);
+        // 'loader' div를 'container' div의 자식으로 추가합니다.
+      }
+    });
+  </script>
+</body>
+
+</html>
