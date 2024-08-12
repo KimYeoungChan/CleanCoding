@@ -1,0 +1,49 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: #2e2c39;
+  overflow: hidden;
+}
+
+.cursor {
+  position: absolute;
+  left: 40px;
+  pointer-events: none;
+}
+
+.cursor span {
+  position: absolute;
+  width: 12px;
+  height: 60px;
+  background: #fff;
+  z-index: 1;
+  border-top: 60px solid #ff7534;
+  border-bottom: 60px solid #00c464;
+}
+
+.cursor span:nth-child(9) {
+  z-index: 1000;
+}
+
+.cursor span:nth-child(9)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  background: url(chakra.png);
+  background-size: cover;
+  animation: animate 20s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

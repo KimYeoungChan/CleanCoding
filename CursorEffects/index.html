@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursor Trails</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+  <div class="cursor"></div>
+  <script>
+    // 문서의 모든 요소가 로드된 후 실행되는 이벤트 리스너 추가
+    document.addEventListener('DOMContentLoaded', () => {
+      // 클래스 이름이 'cursor'인 요소를 선택
+      let cursor = document.querySelector('.cursor');
+
+      // 0부터 19까지 반복하여 span 요소 생성
+      for (let i = 0; i < 20; i++) {
+        // 새로운 span 요소 생성
+        let span = document.createElement('span');
+        // CSS 변수 '--i'에 현재 인덱스 값을 할당
+        span.style.setProperty('--i', i + 1);
+        // 각 span 요소의 left 위치를 계산하여 설정
+        span.style.left = i * 15 + 'px';
+        // 생성한 span을 cursor 요소에 추가
+        cursor.appendChild(span);
+      };
+
+      // 마우스가 움직일 때마다 발생하는 이벤트 리스너 추가
+      document.addEventListener('mousemove', e => {
+        // GSAP를 사용하여 모든 span 요소의 위치를 애니메이션으로 변경
+        gsap.to("span", {
+          x: e.clientX, // 마우스 x 좌표로 이동
+          y: e.clientY, // 마우스 y 좌표로 이동
+          stagger: 0.05 // 각 span 요소가 이동할 때의 지연 시간
+        })
+      });
+    });
+  </script>
+
+</body>
+
+</html>
