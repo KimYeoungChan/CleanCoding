@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Hover Effects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <ul>
+    <li style="--clr:#e6444f;"><a href="#" class="text">First</a></li>
+    <li style="--clr:#f0b024;"><a href="#" class="text">Attempt</a></li>
+    <li style="--clr:#00a492;"><a href="#" class="text">In</a></li>
+    <li style="--clr:#af579b;"><a href="#" class="text">Leaning</a></li>
+  </ul>
+  <script>
+    // 클래스가 'text'인 모든 요소를 선택합니다.
+    const texts = document.querySelectorAll('.text');
+
+    // 'texts' NodeList의 각 요소를 반복합니다.
+    texts.forEach(text => {
+
+      // 요소의 trim된 텍스트 내용을 배열로 만듭니다.
+      // 각 문자를 <span> 요소로 매핑합니다.
+      // 문자가 빈 문자열인 경우(이 조건은 사실 textContent.trim()이 이미 공백을 제거하기 때문에 불필요함), 빈 문자열 대신 비-깨지기 공백('&nbsp;')으로 대체합니다.
+      // 모든 span 요소를 하나의 문자열로 결합합니다.
+      const spans = Array.from(text.textContent.trim()).map(
+        char => `<span>${char === '' ? '&nbsp;' : char}</span>`).join('');
+
+      // 요소의 inner HTML을 새로 생성된 span 요소들의 문자열로 대체합니다.
+      text.innerHTML = spans;
+
+      // 방금 생성된 현재 'text' 요소 안의 모든 <span> 요소를 선택합니다.
+      const spanList = text.querySelectorAll('span');
+
+      // 목록에 있는 각 span 요소를 반복합니다.
+      spanList.forEach((span, index) => {
+
+        // 현재 span에 'mouseover' 이벤트 리스너를 추가합니다.
+        span.addEventListener('mouseover', () => {
+
+          // 모든 span을 다시 반복하여 전환 지연 시간을 계산하고 설정합니다.
+          spanList.forEach((s, i) => {
+
+            // 현재 span과 호버된 span 사이의 거리를 계산합니다.
+            const distance = Math.abs(index - i);
+
+            // 거리에 따라 전환 지연 시간을 계산합니다. (span 당 0.1초)
+            const delay = (distance * 0.1).toFixed(1);
+
+            // 계산된 지연 시간을 현재 span의 transitionDelay 스타일 속성에 적용합니다.
+            s.style.transitionDelay = `${delay}s`;
+          });
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
