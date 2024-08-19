@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotlight Effects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="spotlight"></div>
+  <div class="content">
+    <h2>Spotlight using CSS & Javascript</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo incidunt, tempora dolorum voluptas, dolorem
+      architecto cupiditate quod nostrum quis provident quos quam optio magnam doloribus distinctio cumque consectetur
+      ipsa? Sequi ducimus accusamus voluptas assumenda repudiandae vel possimus illo ea quisquam repellendus molestias
+      dolores, ipsum adipisci. Ab, assumenda? Nobis itaque molestias, obcaecati cupiditate eligendi aut ipsam amet
+      minima dicta corporis facilis repellat suscipit nostrum culpa saepe vitae expedita odit ut aliquam. Beatae
+      tempora, autem ab ipsa aut cupiditate itaque quaerat recusandae porro excepturi ullam obcaecati eveniet qui. Ea
+      inventore distinctio quasi nihil? Eum omnis, quo id dolor porro, voluptate ad ab ipsa quibusdam pariatur nesciunt
+      libero, ratione rerum molestiae quia ipsam vel quos obcaecati atque. Pariatur officiis facilis natus, aliquid
+      tempore fugit! Fugiat sint cumque fugit adipisci aperiam rerum, architecto iusto quos! Temporibus vero assumenda
+      quam quis rem, odio qui vel quae impedit quia minima cumque dolor quisquam numquam ducimus? Distinctio est natus
+      voluptate omnis id vitae ipsum iusto dicta magni, ea animi, qui quae dolore eius facere architecto rerum nulla
+      vero, nam ipsam? Mollitia quos iste quasi! Sint magni eveniet eum maiores iure consequuntur enim sed eius harum,
+      cupiditate, consequatur fuga obcaecati eaque nobis! Consectetur delectus fugit deserunt itaque perferendis!</p>
+  </div>
+  <script>
+    let body = document.querySelector('body');
+    let spotlight = document.querySelector('.spotlight');
+
+    window.onmousemove = function (e) {
+      spotlight.style.top = e.clientY + 'px';
+      spotlight.style.left = e.clientX + 'px';
+    };
+
+    // double click
+    body.ondblclick = function () {
+      body.classList.toggle('active')
+    };
+  </script>
+</body>
+
+</html>
