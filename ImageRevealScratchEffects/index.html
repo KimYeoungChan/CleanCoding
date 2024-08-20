@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Reveal Effects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <script>
+    document.addEventListener('mousemove', function (e) {
+      // 1. 'mousemove' 이벤트가 발생할 때마다 이 함수가 실행됩니다.
+      // 'mousemove' 이벤트는 사용자가 마우스를 움직일 때 발생합니다.
+
+      let body = document.querySelector('body');
+      // 2. 문서에서 'body' 요소를 선택하여 변수 'body'에 저장합니다.
+      // 이 요소는 새로 생성되는 원(circle)을 추가할 위치를 나타냅니다.
+
+      let circle = document.createElement('span');
+      // 3. 새로운 'span' 요소를 생성하고 이를 'circle' 변수에 저장합니다.
+      // 이 'span' 요소는 마우스 위치에 나타나는 원(circle)이 됩니다.
+
+      circle.style.left = -75 + e.offsetX + 'px';
+      // 4. 생성된 'span' 요소의 왼쪽 위치를 설정합니다.
+      // e.offsetX는 마우스가 이벤트를 발생시킨 요소 내에서의 X 좌표를 나타냅니다.
+      // 원의 중심이 마우스 위치에 오도록 -75를 더합니다.
+
+      circle.style.top = -75 + e.offsetY + 'px';
+      // 5. 생성된 'span' 요소의 상단 위치를 설정합니다.
+      // e.offsetY는 마우스가 이벤트를 발생시킨 요소 내에서의 Y 좌표를 나타냅니다.
+      // 원의 중심이 마우스 위치에 오도록 -75를 더합니다.
+
+      body.appendChild(circle);
+      // 6. 'body' 요소에 생성된 'span' 요소(원)을 자식으로 추가합니다.
+      // 이렇게 하면 화면에 원(circle)이 나타납니다.
+    });
+
+  </script>
+</body>
+
+</html>
