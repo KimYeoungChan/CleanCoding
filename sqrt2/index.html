@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS JS Effects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <section></section>
+  <script>
+    let section = document.querySelector('section');
+    for (let i = 0; i < 300; i++) {
+      // div 요소를 300번 반복하여 생성.
+      let div = document.createElement('div');
+      // 생성된 div 요소를 section 태그 안에 자식 요소로 추가.
+      section.appendChild(div);
+    };
+    document.addEventListener('mousemove', function (e) {
+      // 문서에서 'mousemove' 이벤트가 발생할 때마다 이 함수를 실행.
+      document.querySelectorAll('div').forEach(div => {
+        // 문서 내 모든 div 요소를 선택하고, 각각의 div 요소에 대해 콜백 함수 실행.
+        let x = (div.offsetLeft + div.offsetWidth / 2) - e.pageX;
+        // div 요소의 가로 중심점에서 마우스의 X 좌표를 빼서 x 변수에 할당.
+        // div.offsetLeft는 div의 왼쪽 경계가 문서의 왼쪽 경계로부터 떨어진 거리.
+        // div.offsetWidth / 2는 div의 너비의 절반(즉, div의 중앙).
+        let y = (div.offsetTop + div.offsetHeight / 2) - e.pageY;
+        // div 요소의 세로 중심점에서 마우스의 Y 좌표를 빼서 y 변수에 할당.
+        // div.offsetTop은 div의 위쪽 경계가 문서의 위쪽 경계로부터 떨어진 거리.
+        // div.offsetHeight / 2는 div의 높이의 절반(즉, div의 중앙).
+        let dist = Math.sqrt(x * x + y * y);
+        // 피타고라스 정리를 사용하여 x와 y 좌표의 차이를 기반으로 마우스 포인터와 div 중심점 사이의 거리 계산.
+        div.style.transform = `rotate(${dist / 2}deg)`;
+        // 거리에 따라 div 요소를 회전. 거리를 2로 나누어 회전 각도를 결정.
+        // 거리가 멀수록 div가 더 많이 회전.
+      });
+    });
+  </script>
+</body>
+
+</html>
