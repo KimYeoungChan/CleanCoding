@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drag & Drop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="box"></div>
+    <div class="box">
+      <div class="glow" draggable="true"></div>
+    </div>
+    <div class="box"></div>
+    <div class="box"></div>
+  </div>
+  <script>
+    let boxes = document.querySelectorAll('.box');
+    let glow = document.querySelector('.glow');
+
+    // 각 box 요소에 대해 반복적으로 이벤트 리스너를 추가
+    boxes.forEach((box) => {
+
+      // dragover 이벤트가 발생할 때 호출되는 함수 추가
+      // 이 함수는 기본 dragover 이벤트의 동작을 막아, drop 이벤트가 발생할 수 있도록 함
+      box.addEventListener("dragover", (e) => {
+        e.preventDefault(); // 기본 동작(예: 열려있는 파일을 브라우저에 표시)을 방지
+      });
+      // drop 이벤트가 발생할 때 호출되는 함수 추가
+      // 이 함수는 .glow 요소를 드롭된 해당 box 요소 안으로 이동시킴
+      box.addEventListener("drop", () => {
+        box.appendChild(glow); // 드래그된 .glow 요소를 현재 box 요소의 자식으로 추가
+      });
+    });
+  </script>
+</body>
+
+</html>
