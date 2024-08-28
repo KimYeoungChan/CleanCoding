@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon SVG Loader</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="loader">
+    <!-- viewBox="0 0 200 200"는 SVG의 가로, 세로가 각각 200x200의 단위로 정의된다는 의미입니다. (0, 0)에서 (200, 200)까지의 좌표를 사용합니다. -->
+    <svg viewBox="0 0 200 200">
+      <!-- 100x100 좌표에 중심을 두고 반지름이 50인 원이 그려집니다. 원은 SVG 영역의 가운데에 위치하게 됩니다. -->
+      <circle cx="100" cy="100" r="50"></circle>
+    </svg>
+    <svg viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="50"></circle>
+    </svg>
+    <svg viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="50"></circle>
+    </svg>
+  </div>
+</body>
+
+</html>
