@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horizontal Page Scrolling</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <section style="--clr:#dad4ff;">
+      <div class="content">
+        <h2>Section One</h2>
+      </div>
+    </section>
+    <section style="--clr:#fffd92;">
+      <div class="content">
+        <h2>Section Two</h2>
+      </div>
+    </section>
+    <section style="--clr:#ffe2eb;">
+      <div class="content">
+        <h2>Section Three</h2>
+      </div>
+    </section>
+    <section style="--clr:#cfffca;">
+      <div class="content">
+        <h2>Section Four</h2>
+      </div>
+    </section>
+    <section style="--clr:#dafff6;">
+      <div class="content">
+        <h2>Section Five</h2>
+      </div>
+    </section>
+  </div>
+  <script>
+    window.addEventListener('scroll', function () { // 사용자가 스크롤할 때마다 이벤트가 발생하도록
+      let scrollY = window.scrollY; // 현재 페이지에서 얼마나 스크롤되었는지를 scrollY에 저장합니다.
+      let topHeight = document.body.scrollHeight - window.innerHeight; // 문서 전체 높이에서 현재 창 높이를 뺀 값을 계산하여 페이지에서 스크롤 가능한 전체 높이를 구합니다.
+      let percentScrolled = (scrollY / topHeight) * 100; // 스크롤된 양을 퍼센트로 계산
+      let translateX = (percentScrolled / 5) * -4; // 스크롤된 퍼센트를 바탕으로 요소의 X축 이동값을 계산합니다. 
+      document.querySelector('.container').style.transform = `translateX(${translateX}%)`; // .container 클래스를 가진 요소의 위치를 translateX() CSS 함수로 X축 방향으로 이동
+    });
+  </script>
+</body>
+
+</html>
