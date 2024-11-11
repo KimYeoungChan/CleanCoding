@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Glowing Button</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <a href="#" style="--clr:#0f0;"><span>Button</span></a>
+  <script>
+    let btn = document.querySelector('a');
+    // btn 요소에 마우스가 움직일 때, 함수
+    btn.onmousemove = function (e) {
+      let x = e.pageX - btn.offsetLeft; // btn 요소 내부에서의 마우스 X 좌표
+      let y = e.pageY - btn.offsetTop; // btn 요소 내부에서의 마우스 y 좌표
+
+      // 변수 생성
+      btn.style.setProperty('--x', x + 'px'); // CSS 변수 --x에 X 좌표 값을 픽셀 단위(px)로 설정합니다.
+      btn.style.setProperty('--y', y + 'px'); // CSS 변수 --y에 Y 좌표 값을 픽셀 단위(px)로 설정합니다.
+    }
+  </script>
+</body>
+
+</html>
