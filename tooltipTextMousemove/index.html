@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tooltip Text Move</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="box">
+      <img src="img1.jpg" alt="">
+      <span class="tooltip">Cooooooool</span>
+    </div>
+    <div class="box">
+      <img src="img2.jpg" alt="">
+      <span class="tooltip">Awesomeeee</span>
+    </div>
+    <div class="box">
+      <img src="img3.jpg" alt="">
+      <span class="tooltip">Wowwwwww</span>
+    </div>
+  </div>
+  <script>
+    let tooltips = document.querySelectorAll('.tooltip');
+    // 마우스가 움직일 때마다 실행
+    window.onmousemove = function (e) {
+      let x = (e.clientX + 20) + 'px'; // e.clientX는 브라우저 창 기준으로 마우스 커서의 X 좌표
+      let y = (e.clientY + 20) + 'px'; // e.clientY는 브라우저 창 기준으로 마우스 커서의 Y 좌표
+      // tooltips에 포함된 모든 요소를 순회
+      for (var i = 0; i < tooltips.length; i++) { //
+        tooltips[i].style.top = y; // 각 tooltip 요소의 top 위치를 y 값으로 설정
+        tooltips[i].style.left = x; // 각 tooltip 요소의 left 위치를 x 값으로 설정
+      };
+    };
+  </script>
+</body>
+
+</html>
