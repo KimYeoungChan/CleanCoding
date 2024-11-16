@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Click Effects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <script>
+    let container = document.querySelector('body');
+    container.addEventListener('click', function (event) {
+      let spark = document.createElement('div');
+      spark.classList.add('spark');
+      // event.clientY = 브라우저 창 기준으로 클릭된 Y 좌표
+      // container.offsetTop = 컨테이너의 위쪽 가장자리와 브라우저 창의 위쪽 사이의 거리.
+      spark.style.top = (event.clientY - container.offsetTop) + 'px';
+      // 클릭된 X 좌표에서 컨테이너의 왼쪽 가장자리 거리를 뺀 값을 픽셀 단위로 계산합니다.
+      spark.style.left = (event.clientX - container.offsetLeft) + 'px';
+      // 색상 랜덤
+      spark.style.filter = 'hue-rotate(' + Math.random() * 360 + 'deg)';
+      container.appendChild(spark);
+
+      for (var i = 0; i <= 7; i++) {
+        let span = document.createElement('span');
+        // 각 span 요소를 중심에서 45도씩 회전시켜 원형으로 배치합니다.
+        span.style.transform = 'rotate(' + (i * 45) + 'deg)';
+        spark.appendChild(span);
+      };
+
+      setTimeout(function () {
+        spark.remove();
+      }, 1500);
+    });
+  </script>
+</body>
+
+</html>
