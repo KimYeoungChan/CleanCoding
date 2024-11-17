@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glowing Dot Animation Effects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <section>
+    <div class="container"></div>
+  </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"
+    integrity="sha512-aNMyYYxdIxIaot0Y1/PLuEu3eipGCmsEUBrUq+7aVyPGMFH8z0eTP0tkqAvv34fzN6z+201d3T8HPb1svWSKHQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    let container = document.querySelector('.container');
+    for (let i = 1; i <= 144; i++) {
+      let dot = document.createElement('div');
+      dot.classList.add('element');
+      container.appendChild(dot);
+    }
+
+    let dotAll = document.querySelectorAll('.element');
+    // 
+    let animation = anime.timeline({
+      targets: dotAll, // dotAll에 모든 요소들
+      easing: 'easeInOutExpo', // 부드럽게 시작하고 끝나는 가속 곡선
+      loop: true, // 무한 반복
+      delay: anime.stagger(20), // 각 요소가 애니메이션을 시작하는 시간에 20ms 간격
+
+    });
+
+    // 첫번째 에니메이션
+    animation.add({
+      scale: 0.1, // 0.1 축소
+      duration: function () {
+        // 각 요소가 500ms에서 3000ms 사이의 랜덤한 시간 동안 애니메이션
+        return anime.random(500, 3000);
+      },
+    })
+      // 두번째 에니메이션
+      .add({
+        scale: 1, // 1 홗대
+        // 각 요소가 500ms에서 3000ms 사이의 랜덤한 시간 동안 애니메이션
+        duration: function () {
+          return anime.random(500, 3000);
+        },
+      })
+  </script>
+
+</body>
+
+</html>
