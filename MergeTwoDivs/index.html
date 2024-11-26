@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Liquid Effect</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+  </div>
+  <svg>
+    <!-- 필터 효과를 정의하는 요소 -->
+    <!-- id="liquid"로 필터를 식별 -->
+    <filter id="liquid">
+      <!-- in="SourceGraphic"은 필터를 적용할 그래픽(현재는 circle)을 지정합니다 -->
+      <!-- stdDeviation="10"은 흐림의 강도를 조절합니다. -->
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+      <!-- feColorMatrix는 그래픽의 색상을 변환하는 역할 -->
+      <!-- type="matrix"는 행렬 변환 -->
+      <!-- 4x5 행렬로 정의 -->
+      <!--  20과 -10은 불투명도를 조정해, 더 강렬하고 뭉개진 액체 효과를 만듭니다. -->
+      <feColorMatrix type="matrix" values="
+          1 0 0 0 0
+          0 1 0 0 0
+          0 0 1 0 0
+          0 0 0 20 -10
+        " />
+    </filter>
+  </svg>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+  <script>
+    $(function () {
+      // draggable() 메서드
+      $(".container .circle").draggable();
+    });
+  </script>
+</body>
+
+</html>
