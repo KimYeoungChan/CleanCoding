@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS JS Effects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <section></section>
+  <script>
+     let section = document.querySelector('section'); // section 요소 선택
+    for (let i = 0; i < 600; i++) { // 600개의 div 요소 생성
+      let div = document.createElement('div'); // 새로운 div 요소 생성
+      section.appendChild(div); // 생성한 div 요소를 section에 추가
+    }
+
+    // 마우스 오버 이벤트를 추가
+    document.addEventListener('mouseover', function (e) {
+      // 모든 div 요소에 대해 순차적으로 처리
+      document.querySelectorAll('div').forEach((div) => {
+        // 마우스 위치와 각 div 요소 간의 거리 계산
+        let x = div.offsetLeft - e.pageX; // div 요소의 좌측 위치와 마우스 X 좌표 차이
+        let y = div.offsetTop - e.pageY; // div 요소의 상단 위치와 마우스 Y 좌표 차이
+        let dist = Math.sqrt(x * x + y * y); // 두 점 사이의 거리 계산 (피타고라스의 정리 사용)
+
+        // 거리 기반으로 스코어 계산 (거리값이 멀어질수록 낮은 값)
+        let score = Math.exp(dist * -0.01); // 지수 함수로 부드럽게 거리 영향 줄이기
+
+        // div 요소에 변형과 투명도 효과 적용
+        div.style.transform = "scale(" + score * 4 + ") rotate(" + score * 180 + "deg)"; // 크기 확대/축소 및 회전 효과
+        div.style.opacity = score * 2; // 투명도 변경 (거리 멀어지면 점점 투명해짐)
+
+        // div 요소에 랜덤 색조 회전 효과 추가
+        let randomHue = Math.random() * 720; // 0부터 720 사이의 랜덤 색조값 생성
+        div.style.filter = `hue-rotate(${randomHue}deg)`; // 필터로 색조 회전 효과 적용
+      })
+    });
+  </script>
+</body>
+
+</html>
