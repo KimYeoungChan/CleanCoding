@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Republic Day | India</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+  <div class="cursor"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let cursor = document.querySelector('.cursor');
+      let textContent = 'Happy_Republic_Day_India';
+      for (let i = 0; i < textContent.length; i++) {
+        let span = document.createElement('span');
+        span.classList.add('text');
+        span.style.setProperty('--i', i + 1);
+        span.style.left = i * 10 + 'px';
+        span.textContent = textContent[i];
+        cursor.appendChild(span);
+      };
+      document.addEventListener('mousemove', e => {
+        gsap.to('.text', {
+          x: e.clientX,
+          y: e.clientY,
+          stagger: 0.05
+        })
+      });
+    });
+  </script>
+</body>
+
+</html>
